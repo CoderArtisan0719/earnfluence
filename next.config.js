@@ -16,6 +16,16 @@ module.exports = {
         hostname: "unsplash.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "www.cameo.com",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "assets.aceternity.com",
+        port: "",
+      },
     ],
   },
 };

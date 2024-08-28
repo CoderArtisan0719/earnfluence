@@ -18,6 +18,9 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { Button } from "@/components/ui/button"
+import AppleCardsCarouselDemo from "@/components/ui/AppleCardsCarouselDemo"
+
+import picks from "@/data/featured-picks"
 
 const Page = () => {
   return (
@@ -103,7 +106,8 @@ const Page = () => {
         <div className="w-2/5">
           <PlaceholdersAndVanishInputDemo />
         </div>
-        <Button variant="link">Login</Button>      </div>
+        <Button variant="link">Login</Button>
+      </div>
       {/* Personalized videos from your favorite stars */}
       <div className="py-8 px-4 w-full">
         <h1 className="font-medium transition-colors text-3xl text-center mb-10">Personalized videos from your favorite stars</h1>
@@ -111,7 +115,7 @@ const Page = () => {
           {
             Array.from({ length: 7 }, (v, i) => 
             <div className="flex flex-col gap-2 text-center underline cursor-pointer hover:text-pink-100">
-              <div className="flex flex-col w-36 h-36 overflow-hidden rounded-full bg-red-500 relative border border-white group">
+              <div className="flex flex-col w-36 h-36 overflow-hidden rounded-full relative border border-white group">
                 <Image
                   src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?q=80&w=3556&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   alt="Macbook mockup from Aceternity UI"
@@ -132,6 +136,34 @@ const Page = () => {
           </div>
         </div>
       </div>
+      {/* Featured picks */}
+      <div className="grid gap-6">
+        <h2 className="font-medium text-xl font-bold">Featured picks</h2>
+        <div className="flex gap-4">
+          {
+            picks.map((pick, index) => 
+              <div
+                className="w-1/4 flex flex-col h-44 overflow-hidden relative group"
+                key={index}
+              >
+              <Image
+                src={pick.url}
+                alt={pick.alt}
+                layout="fill"
+                objectFit="strech"
+                objectPosition="center top"
+                className=""
+              />
+            </div>
+          )}
+          
+        </div>
+      </div>
+      {/* Today's top 10 */}
+      <AppleCardsCarouselDemo />
+
+
+
     </div>
   )
 }
