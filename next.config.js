@@ -26,6 +26,12 @@ module.exports = {
         hostname: "assets.aceternity.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.cameo.com",
+        port: "",
+      },
+      
     ],
   },
 };

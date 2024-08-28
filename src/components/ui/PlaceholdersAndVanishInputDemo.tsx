@@ -21,9 +21,9 @@ const PlaceholdersAndVanishInputDemo = () => {
 	return (
 		<div className="items-center px-4">
 			<PlaceholdersAndVanishInput
-					placeholders={placeholders}
-					onChange={handleChange}
-					onSubmit={onSubmit}
+        placeholders={placeholders}
+        onChange={handleChange}
+        onSubmit={onSubmit}
 			/>
 		</div>
 	);
