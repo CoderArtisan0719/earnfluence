@@ -11,17 +11,15 @@ import Reviews from "@/components/ui/reviews"
 import Categories from "@/components/ui/categories"
 import CameoCards from "@/components/ui/cameo-card"
 import Cameo from "@/components/ui/cameo"
-import MailingList from "@/components/ui/mailing-list"
-import ContactInfo from "@/components/ui/contact-info"
-import Footer from "@/components/ui/footer"
 import BottomSticky from "@/components/bottom-sticky"
+import FooterSection from "@/components/ui/footer-section"
 
 const Page = () => {
   return (
     <React.Fragment>
-      <div className="relative pb-32 z-50 bg-black">
+      <div className="relative z-50 bg-black">
         <div className="px-12">
-          <Header />
+          <Header className="bg-black" />
           <FavoriteStars />
           <FeaturedPicks />
           <AppleCardsCarouselDemo />
@@ -32,12 +30,7 @@ const Page = () => {
           <Cameo />
         </div>
         <Separator className="my-4 border-white" />
-        <div className="px-12 py-8 flex justify-between">
-          <MailingList />
-          <ContactInfo />
-        </div>
-        <Separator className="my-4 border-white" />
-        <Footer />
+        <FooterSection />
       </div>
       <BottomSticky />
     </React.Fragment>

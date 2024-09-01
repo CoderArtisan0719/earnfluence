@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import GooglePay from "@/icons/google-pay";
 import ContactInfoData from "@/data/contact-info";
+import Link from "next/link";
 import { IconBrandInstagram, IconBrandTiktok, IconBrandTwitter, IconBrandFacebook, IconMail } from "@tabler/icons-react"
 
 const ContactInfo = () => {
@@ -15,12 +16,13 @@ const ContactInfo = () => {
               <ul className="flex flex-col gap-2 text-violet-100 font-medium">
                 {
                   c.data.map((item, _i) => 
-                    <li
-                      key={`${index}_${_i}`}
+                    <Link
+                      href={item.url}
                       className="cursor-pointer"
+                      key={`${index}_${_i}`}
                     >
-                      {item}
-                    </li>
+                      {item.content}
+                    </Link>
                   )
                 }
               </ul>

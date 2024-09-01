@@ -31,6 +31,11 @@ module.exports = {
         hostname: "cdn.cameo.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "d3el26csp1xekx.cloudfront.net",
+        port: "",
+      },
       
     ],
   },

@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -14,13 +16,32 @@ import { Button } from './button';
 import Link from 'next/link';
 import PlaceholdersAndVanishInputDemo from "@/components/ui/PlaceholdersAndVanishInputDemo"
 
-const Header = () => {
+type HeaderProps = {
+  className: string
+};
+
+const Header = ({ className }: HeaderProps) => {
+  const [isSticky, setIsSticky] = useState(true);
+  
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    setIsSticky(offset <= 600);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="flex py-3 items-center justify-between">
+    <div className={`flex py-3 px-16 items-center justify-between ${className} ${isSticky ? 'sticky top-0 z-50' : ''}`}>
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
+            <NavigationMenuTrigger className='bg-transparent'>Categories</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                 {navBarContents.map((component) => (
@@ -35,21 +56,6 @@ const Header = () => {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/docs" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                For kids
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/docs" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                For business
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-
           <NavigationMenuItem>
             <Link href="/docs" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -70,7 +76,7 @@ const Header = () => {
       <div className="w-2/5">
         <PlaceholdersAndVanishInputDemo />
       </div>
-      <Button variant="link">Login</Button>
+      <Link href="/sign-in" className='text-white hover:underline font-medium'>Login</Link>
     </div>
   )
 };

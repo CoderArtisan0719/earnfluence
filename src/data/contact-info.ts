@@ -1,15 +1,25 @@
 const ContactInfoData = [
   {
     title: "Company",
-    data: ["About", "Team", "Jobs", "Blog", "Press"]
+    data: [
+      {
+        content: 'About',
+        url: '/about'
+      },
+    ]
   },
   {
     title: "Support",
-    data: ["Help", "FAQ", "Accessibility"]
-  },
-  {
-    title: "Shop",
-    data: ["Gift Cards", "For business", "For kids"]
+    data: [
+      {
+        content: 'Help',
+        url: '/help'
+      },
+      {
+        content: 'FAQ',
+        url: '/faq'
+      },
+    ]
   }
 ];
 
