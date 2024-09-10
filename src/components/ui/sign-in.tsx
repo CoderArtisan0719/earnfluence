@@ -1,21 +1,45 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Input } from "./input";
 import SocialButton from "./social-button";
 import Link from "next/link";
 import { useRouter } from 'next/navigation'
+import { api } from "../../../convex/_generated/api";
+import { fetchMutation } from "convex/nextjs";
+import { useAuth } from "@/app/provider/AuthContext";
 
 const SignInForm: React.FC = () => {
+  const [email, setEmail] = useState('');
+  
   const router = useRouter();
+  const { login } = useAuth();
 
   const handleSocialLogin = (platform: string) => {
     console.log(`Logging in with ${platform}`);
   };
 
-  const handleSignin = (e: React.FormEvent) => {
+  const handleSignin = async (e: React.FormEvent) => {
     e.preventDefault();
-    router.push('/sign-up')
+    const result = await fetchMutation(api.user.signIn, { email });
+
+    if (result) {
+      const userData = {
+        dob: result.dob,
+        email: result.email,
+        id: result._id,
+        phone: result.phone,
+      }
+
+      login(userData);
+
+      router.push('/')
+
+    } else {
+      console.log(result, 'result')
+      router.push('/sign-up')
+
+    }
   };
 
   return (
@@ -32,6 +56,8 @@ const SignInForm: React.FC = () => {
             className="py-5 mt-2"
             id="email"
             aria-label="Email address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <p className="text-gray-300 text-center pt-2 pb-4 text-sm">
             By continuing you agree to Cameo's{" "}

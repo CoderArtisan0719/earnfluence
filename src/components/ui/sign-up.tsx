@@ -7,31 +7,89 @@ import { Label } from "./label";
 import { Checkbox } from "./checkbox";
 import Link from "next/link";
 import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
+import { fetchMutation, fetchQuery } from "convex/nextjs";
+import { api } from "../../../convex/_generated/api";
+import { useAuth } from "@/app/provider/AuthContext";
 
 const SignUpForm: React.FC = () => {
   const router = useRouter();
   const [dob, setDob] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [dobError, setDobError] = useState("");
+  const [emailError, setEmailError] = useState("");
 
-  const handleSignin = (e: React.FormEvent) => {
-    e.preventDefault();
-    router.push('/sign-up')
-  };
+  const { login } = useAuth();
 
   const handleDobChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let value = e.target.value.replace(/\D/g, ''); // Remove all non-numeric characters
+    let value = e.target.value.replace(/\D/g, ''); 
     if (value.length > 2 && value.length <= 4) {
-      value = value.replace(/(\d{2})(\d+)/, '$1/$2'); // Insert /
+        value = value.replace(/(\d{2})(\d+)/, '$1/$2');
     } else if (value.length > 4) {
-      value = value.replace(/(\d{2})(\d{2})(\d+)/, '$1/$2/$3'); // Insert / again
+        value = value.replace(/(\d{2})(\d{2})(\d+)/, '$1/$2/$3');
     }
     setDob(value);
+
+    if (!/^(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])\/(19|20)\d{2}$/.test(value) && value.length === 10) {
+        setDobError("Please enter a valid date in MM/DD/YYYY format.");
+    } else {
+        setDobError("");
+    }
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(value)) {
+        setEmailError("Please enter a valid email address.");
+    } else {
+        setEmailError("");
+    }
+  }
+
+  const handleSignup = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || emailError) {
+      setEmailError(email ? emailError : "Email is required.");
+      return;
+    }
+  
+    if (!dob || dobError) {
+      setDobError(dob ? dobError : "Date of birth is required.");
+      return;
+    }
+  
+    try {
+      const emailExists = await fetchQuery(api.user.checkEmailExists, { email });
+      if (emailExists) {
+        setEmailError("Email already registered.");
+        return;
+      }
+  
+      const result = await fetchMutation(api.user.signUp, { email, dob, phone });
+      console.log(result, 'resutl')
+      if (result) {
+        const userData = {
+          id: result,
+          email: email,
+          phone: phone,
+          dob: dob
+        };
+
+        login(userData);
+      };;
+
+      router.push('/');
+    } catch (err) {
+      console.error('Error during user creation:', err);
+    }
   };
 
   return (
     <div className="flex justify-center">
-      <form className="max-w-[450px] my-12" onSubmit={handleSignin}>
+      <form className="max-w-[450px] my-12" onSubmit={handleSignup}>
         <h1 className="text-3xl font-medium text-white">Finish signing up</h1>
         <p className="text-gray-300 mt-2 mb-6">
           You'll need a free Cameo account in order to follow your favorite celebrities and get other Cameo news & special offers
@@ -43,10 +101,13 @@ const SignUpForm: React.FC = () => {
           <Input
             type="email"
             placeholder="you@example.com"
-            className="py-5 mt-2"
+            className={`py-5 mt-2 ${emailError ? "border-red-500" : ""}`}
             id="email"
             aria-label="Email address"
+            value={email}
+            onChange={handleEmailChange}
           />
+          {emailError && <div className="text-red-500 text-sm mt-2">{emailError}</div>}
           <div className="mt-4 mb-6">
             <div className="flex items-center space-x-2">
               <Checkbox id="terms" />
@@ -59,7 +120,7 @@ const SignUpForm: React.FC = () => {
               <PhoneInput
                 country={'us'}
                 value={phone}
-                onChange={setPhone}
+                onChange={(event) => setPhone(event)}
                 inputClass="!w-full !pl-16 py-5 !bg-transparent !border !border-blue-300 !border-opacity-20 rounded-md focus:ring-2 focus:ring-gray-400 focus:border-transparent"
                 containerClass="!w-full bg-transparent "
                 buttonClass="!px-1 !bg-transparent !border-r !border-blue-300 !border-opacity-20 !focus:bg-black"
@@ -78,17 +139,18 @@ const SignUpForm: React.FC = () => {
           </div>
           <div className="mt-4 mb-6">
             <div className="flex flex-col space-y-4">
-              <Label htmlFor="email" className="text-md">Date of birth</Label>
-              <Input
-                type="text"
-                placeholder="07/19/1996"
-                className={`py-5 mt-2`}
-                id="dob"
-                aria-label="Date of birth"
-                value={dob}
-                onChange={handleDobChange}
-                maxLength={10}
-              />
+                <Label htmlFor="email" className="text-md">Date of birth</Label>
+                <Input
+                    type="text"
+                    placeholder="MM/DD/YYYY"
+                    className={`py-5 mt-2 ${dobError ? "border-red-500" : ""}`}
+                    id="dob"
+                    aria-label="Date of birth"
+                    value={dob}
+                    onChange={handleDobChange}
+                    maxLength={10}
+                />
+                {dobError && <div className="text-red-500 text-sm mt-2">{dobError}</div>}
             </div>
           </div>
           <p className="my-8 text-sm text-gray-300 font-light">

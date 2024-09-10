@@ -10,10 +10,21 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { IconUser, IconLogout } from '@tabler/icons-react';
+import { Button } from "@/components/ui/button"
 import { cn } from '@/lib/utils';
 import { navBarContents } from '@/data/navbar-contents';
-import { Button } from './button';
 import Link from 'next/link';
+import { useAuth } from '@/app/provider/AuthContext';
 import PlaceholdersAndVanishInputDemo from "@/components/ui/PlaceholdersAndVanishInputDemo"
 
 type HeaderProps = {
@@ -22,6 +33,8 @@ type HeaderProps = {
 
 const Header = ({ className }: HeaderProps) => {
   const [isSticky, setIsSticky] = useState(true);
+
+  const { user, logout } = useAuth();
   
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -65,7 +78,7 @@ const Header = ({ className }: HeaderProps) => {
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <Link href="/docs" legacyBehavior passHref>
+            <Link href="/join-talent" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                 Join as talent
               </NavigationMenuLink>
@@ -76,7 +89,30 @@ const Header = ({ className }: HeaderProps) => {
       <div className="w-2/5">
         <PlaceholdersAndVanishInputDemo />
       </div>
-      <Link href="/sign-in" className='text-white hover:underline font-medium'>Login</Link>
+      {
+        user ?
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline"><IconUser className="h-4 w-4" /></Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56">
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuItem>
+                <IconUser className="mr-2 h-4 w-4" />
+                <span>Profile</span>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={logout}>
+              <IconLogout className="mr-2 h-4 w-4" />
+              <span>Log out</span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+        : <Link href="/sign-in" className='text-white hover:underline font-medium'>Login</Link>
+      }
     </div>
   )
 };
