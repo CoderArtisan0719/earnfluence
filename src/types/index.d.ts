@@ -3,7 +3,7 @@ export interface ValidatinProps {
   dob?: string;
   username?: string;
   phone?: string;
-  legalName?: string;
+  fullname?: string;
   follow?: string;
   followRange?: string;
   followUsername?: string;
@@ -16,7 +16,7 @@ export interface FormDataProps {
   email: string;
   username: string;
   displayName: string;
-  legalName: string;
+  fullname: string;
   country: string;
   follow: string;
   followUsername: string;
@@ -24,12 +24,15 @@ export interface FormDataProps {
   textareaValue: string;
   selected: number | null;
   referralCode: string;
+  type: number,
+  balance: string
+  isAnonymous: boolean | null
 }
 
 type UserType = {
   type?: string;
   email: string;
-  legalName: string;
+  fullname: string;
   photo?: Id<'_storage'>;
   balance?: string;
   creationTime: number;

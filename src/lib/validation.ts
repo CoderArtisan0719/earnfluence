@@ -29,7 +29,7 @@ export  const handleValidation = (formData: FormDataProps): ValidatinProps => {
   if (!validateFollow(formData.follow)) tempErrors.follow = 'Required';
   if (!validateFollowUsername(formData.followUsername)) tempErrors.followUsername = 'Required';
   if (!validateFollowRange(formData.followRange)) tempErrors.followRange = 'Required';
-  if (!formData.legalName) tempErrors.legalName = 'Legal name is required';
+  if (!formData.fullname) tempErrors.fullname = 'Legal name is required';
   // setErrors(tempErrors);
   return tempErrors;
 };

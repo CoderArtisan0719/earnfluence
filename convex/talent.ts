@@ -7,7 +7,7 @@ export const signUp = mutation({
     dob: v.string(),
     displayName: v.string(),
     email: v.string(),
-    legalName: v.string(),
+    fullname: v.string(),
     follow: v.string(),
     followRange: v.string(),
     followUsername: v.string(),
@@ -16,6 +16,9 @@ export const signUp = mutation({
     selected: v.union(v.number(), v.null()),
     textareaValue: v.string(),
     username: v.string(),
+    type: v.number(),
+    balance: v.string(),
+    isAnonymous: v.optional(v.boolean()),
    },
   handler: async (ctx, args) => {
     const talentId = await ctx.db.insert('talents', {
@@ -23,7 +26,7 @@ export const signUp = mutation({
       dob: args.dob,
       displayName: args.displayName,
       email: args.email,
-      legalName: args.legalName,
+      fullname: args.fullname,
       follow: args.follow,
       followRange: args.followRange,
       followUsername: args.followUsername,
@@ -32,6 +35,9 @@ export const signUp = mutation({
       selected: args.selected,
       textareaValue: args.textareaValue,
       username: args.username,
+      type: args.type,
+      balance: args.balance,
+      isAnonymous: args.isAnonymous,
     });
 
     const talentData = await ctx.db.get(talentId);

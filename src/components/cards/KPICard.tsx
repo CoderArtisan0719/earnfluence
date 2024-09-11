@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation'
 
 import { Button } from '@/components/ui/button';
 
@@ -15,10 +15,10 @@ const KPICard = (props: KPIType) => {
   const router = useRouter();
 
   return (
-    <div className="rounded-xl bg-gray-100">
+    <div className="rounded-xl bg-gray-900">
       <div className="mt-4 flex items-center border-b pb-4 pl-4">
-        <div className="rounded-xl bg-gray-200 p-2">
-          <img src={props.img} className="size-[40px]" alt={props.imgAlt} />
+        <div className="rounded-xl bg-gray-900 p-2">
+          <img src={props.img} className="size-[40px]" alt={props.imgAlt} style={{filter: 'invert(1)'}}/>
         </div>
 
         <div className="pl-4 text-xl">{props.title}</div>
@@ -33,7 +33,7 @@ const KPICard = (props: KPIType) => {
             {list.label === 'Go to this Request' && props.link ? (
               <Button
                 variant="link"
-                onClick={() => router.push(`/client/request/${props.link}`)}
+                // onClick={() => router.push(`/client/request/${props.link}`)}
                 className="text-xl font-semibold"
               >
                 {list.label}

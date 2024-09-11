@@ -34,7 +34,7 @@ const TalentForm = () => {
     email: '',
     username: '',
     displayName: '',
-    legalName: '',
+    fullname: '',
     country: '',
     follow: '',
     followUsername: '',
@@ -42,6 +42,9 @@ const TalentForm = () => {
     textareaValue: '',
     selected: null,
     referralCode: '',
+    type: 1,
+    balance: '',
+    isAnonymous: false
   });
 
   const pronouns = ['He/him', 'She/her', 'They/them'];
@@ -119,11 +122,14 @@ const TalentForm = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+
+
     
     const validationErrors = handleValidation(formData);
     setErrors(validationErrors);
     
     if (Object.keys(validationErrors).length === 0) {
+      
       const res = await fetchMutation(api.talent.signUp, formData);
       sessionStorage.setItem('userInfo', JSON.stringify(res));
       router.push('/influencer')
@@ -139,9 +145,9 @@ const TalentForm = () => {
     <form className="mt-8 mb-6" onSubmit={handleSubmit}>
       <TextInputField
         label="Legal name"
-        value={formData.legalName}
-        onChange={(e) => handleInputChange('legalName', e.target.value)}
-        error={errors.legalName}
+        value={formData.fullname}
+        onChange={(e) => handleInputChange('fullname', e.target.value)}
+        error={errors.fullname}
       />
       <div className='my-6 flex gap-6 '>
         {pronouns.map((label, index) => (

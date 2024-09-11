@@ -7,6 +7,7 @@ import KPICard from "@/components/cards/KPICard";
 import KPICardLoading from "@/components/loading/KPICardLoading";
 import { KPIType, RequestTableType } from "@/types";
 import { api } from "../../../convex/_generated/api";
+import type { Id } from '../../../convex/_generated/dataModel';
 
 const Influencer = () => {
   const [loading, setLoading] = useState(false);
@@ -19,6 +20,8 @@ const Influencer = () => {
 
   const reqMutation = useMutation(api.requests.getAvailable);
   const myBidMutation = useMutation(api.bids.getByVendorId);
+  const [page, setPage] = useState(1);
+  const [perpage, setPerpage] = useState(10);
 
   useEffect(() => {
     const userInfo = sessionStorage.getItem('userInfo');
@@ -108,7 +111,6 @@ const Influencer = () => {
         <div className="mt-4 grid gap-4 sm:grid-cols-3">
           <KPICardLoading loading={loading} />
           <KPICardLoading loading={loading} />
-
           {vendorKPI.map((KPI) => (
             <KPICard {...KPI} key={KPI.title} />
           ))}
