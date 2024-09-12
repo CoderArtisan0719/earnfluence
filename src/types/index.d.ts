@@ -30,7 +30,7 @@ export interface FormDataProps {
 }
 
 type UserType = {
-  type?: string;
+  type?: number;
   email: string;
   fullname: string;
   photo?: Id<'_storage'>;
@@ -44,8 +44,8 @@ export interface UserTableType extends UserType {
 }
 
 export type RequestType = {
-  userId: Id<'users'>;
-  kind: string;
+  userId: Id<'talents'>;
+  kind: number;
   survey?: string;
   asset?: string;
   assetOther?: string;

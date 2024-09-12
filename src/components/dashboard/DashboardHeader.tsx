@@ -1,7 +1,7 @@
 'use client'
 /* eslint-disable no-underscore-dangle */
 import { useMutation } from 'convex/react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import type { Dispatch, SetStateAction } from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,8 +24,9 @@ import { Toaster } from '@/components/ui/sonner';
 import type { RootState } from '@/store';
 import { setReq } from '@/store/slices/requestSlice';
 import { setIntendedDo } from '@/store/slices/routerSlice';
-import { defaultRequest } from '@/lib/initials';
-import { BidType, RequestType, UserTableType } from '@/types';
+import { defaultRequest } from '@/utils/initials';
+import type { BidType, RequestType, UserTableType } from '@/utils/types';
+
 import { api } from '../../../convex/_generated/api';
 import type { Id } from '../../../convex/_generated/dataModel';
 

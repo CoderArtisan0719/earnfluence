@@ -23,7 +23,7 @@ interface UserTableType extends UserType {
 
 type RequestType = {
   userId: Id<'talents'>;
-  kind: string;
+  kind: number;
   survey?: string;
   asset?: string;
   assetOther?: string;

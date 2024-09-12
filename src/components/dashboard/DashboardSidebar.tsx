@@ -1,17 +1,18 @@
-'use client';
-
+/* eslint-disable no-underscore-dangle */
+import { useAuthActions } from '@convex-dev/auth/react';
 import {
   ExitIcon,
   GearIcon,
   LayersIcon,
   PlayIcon,
 } from '@radix-ui/react-icons';
-import { useRouter } from 'next/navigation'
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import DashboardSidebarList from './dashboard-sidebar-list';
+import DashboardSidebarList from '@/components/common/DashboardSidevarList';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { UserTableType } from '@/types';
+import type { UserTableType } from '@/utils/types';
 
 type DashboardSidebarProps = {
   success?: boolean;
@@ -30,38 +31,65 @@ const DashboardSidebar = (props: DashboardSidebarProps) => {
 
   const router = useRouter();
 
+  // const { signOut } = useAuthActions();
+
   const handleLogout = () => {
     const userInfo = sessionStorage.getItem('userInfo');
 
     if (userInfo) {
+      const parsedUserInfo = JSON.parse(userInfo);
+
+      // signOut().then(() => {
+      Cookies.remove('auth-token');
       sessionStorage.removeItem('userInfo');
-      router.push('/');
+      router.push(`/auth/signin/${parsedUserInfo.type}`);
+      // });
     }
   };
 
   useEffect(() => {
     const userInfo = sessionStorage.getItem('userInfo');
-    
+
     if (userInfo) {
       const parsedUserInfo = JSON.parse(userInfo);
-      setUser(parsedUserInfo);
-      console.log(parsedUserInfo, 'pased')
-      if (parsedUserInfo) {
+
+      const baseUrl =
+        process.env.SITE_URL || 'https://rugged-trout-139.convex.site';
+      const getPhotoUrl = new URL(`${baseUrl}/getFile`);
+      getPhotoUrl.searchParams.set('storageId', parsedUserInfo.photo as string);
+
+      const userWithPhoto = { ...parsedUserInfo, photo: getPhotoUrl.href };
+      setUser(userWithPhoto);
+
+      if (parsedUserInfo.type === 'client') {
         setMenuItems([
           {
             title: 'Dashboard',
             icon: <LayersIcon />,
-            link: '/influencer',
+            link: '/client',
           },
           {
             title: 'Active Bids',
             icon: <PlayIcon />,
-            link: '/influencer/active',
+            link: '/client/active',
+          },
+        ]);
+      } else if (parsedUserInfo.type === 'vendor') {
+        setMenuItems([
+          {
+            title: 'Dashboard',
+            icon: <LayersIcon />,
+            link: '/vendor',
+          },
+          {
+            title: 'Active Bids',
+            icon: <PlayIcon />,
+            link: '/vendor/active',
           },
           {
             title: 'Payments',
             icon: <span className="px-1">$</span>,
-            link: '/influencer/transaction',
+            link: '/vendor/transaction',
           },
         ]);
       }
@@ -69,21 +97,17 @@ const DashboardSidebar = (props: DashboardSidebarProps) => {
   }, [props.success]);
 
   return (
-    <div className={`${props.className} flex flex-col justify-between bg-gray-800`}>
+    <div className={`${props.className} flex flex-col justify-between`}>
       <div>
-        <div className="mt-8 flex cursor-pointer items-center overflow-hidden rounded-lg py-4 pl-2 hover:bg-gray-400">
+        <img src="/logo.png" className="ml-2 h-10" alt="logo.png" />
+
+        <div className="mt-8 flex cursor-pointer items-center overflow-hidden rounded-lg py-4 pl-2 hover:bg-gray-300">
           <div className="size-12 flex-none rounded-full">
             <Avatar className="size-full">
               <AvatarImage className="border-none" src={user?.photo} />
-              <AvatarFallback className="flex h-full w-full items-center justify-center rounded-full bg-blue-600 text-2xl font-semibold text-white">
-              {user?.fullname ? (
-                <>
-                  {user.fullname.split(' ')[0]?.[0]?.toUpperCase()}
-                  {user.fullname.split(' ')[1]?.[0]?.toUpperCase()}
-                </>
-              ) : (
-                <span>?</span>
-              )}
+              <AvatarFallback className="bg-primary-azureBlue text-2xl font-semibold text-white">
+                {user?.fullname.split(' ')[0]?.[0]?.toLocaleUpperCase()}
+                {user?.fullname.split(' ')[1]?.[0]?.toLocaleUpperCase()}
               </AvatarFallback>
             </Avatar>
           </div>

@@ -7,8 +7,8 @@ import type { RequestType } from '@/utils/types';
 import type { Id } from '../../../convex/_generated/dataModel';
 
 const initialState: RequestType = {
-  userId: '' as Id<'users'>,
-  kind: 'Surveys',
+  userId: '' as Id<'talents'>,
+  kind: 1,
   survey: 'Boundary Survey',
   asset: 'Multifamily',
   assetOther: '',

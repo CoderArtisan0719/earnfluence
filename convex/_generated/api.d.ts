@@ -13,9 +13,14 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
+import type * as auth from "../auth.js";
 import type * as bids from "../bids.js";
 import type * as convexConfig from "../convexConfig.js";
+import type * as files from "../files.js";
+import type * as http from "../http.js";
 import type * as requests from "../requests.js";
+import type * as ResendOTP from "../ResendOTP.js";
+import type * as ResendOTPPasswordReset from "../ResendOTPPasswordReset.js";
 import type * as talent from "../talent.js";
 import type * as transactions from "../transactions.js";
 import type * as user from "../user.js";
@@ -29,9 +34,14 @@ import type * as user from "../user.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  auth: typeof auth;
   bids: typeof bids;
   convexConfig: typeof convexConfig;
+  files: typeof files;
+  http: typeof http;
   requests: typeof requests;
+  ResendOTP: typeof ResendOTP;
+  ResendOTPPasswordReset: typeof ResendOTPPasswordReset;
   talent: typeof talent;
   transactions: typeof transactions;
   user: typeof user;
