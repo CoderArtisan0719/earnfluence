@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 import AppleCardsCarouselDemo from "@/components/ui/AppleCardsCarouselDemo"
 import { Separator } from "@/components/ui/separator"

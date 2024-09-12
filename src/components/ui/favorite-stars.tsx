@@ -14,13 +14,8 @@ const FavoriteStars = () => {
               key={index}
             >
               <div className="flex flex-col w-36 h-36 overflow-hidden rounded-full relative border border-white group">
-                <Image
+                <img 
                   src={star.url}
-                  alt={star.alt}
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="center top"
-                  className="transform transition-transform duration-300 group-hover:scale-110"
                 />
               </div>
               <span className="text-sm font-medium leading-none">{ star.content }</span>

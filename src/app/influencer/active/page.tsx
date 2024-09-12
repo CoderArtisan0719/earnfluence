@@ -1,7 +1,4 @@
 'use client'
-/* eslint-disable no-nested-ternary */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable no-console */
 import { useMutation } from 'convex/react';
 import router from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
@@ -75,7 +72,6 @@ const VendorActive = () => {
 
   useEffect(() => {
     const userInfo = sessionStorage.getItem('userInfo');
-
     if (!userInfo) router.push('/auth/signin/vendor');
     else {
       const parsedUserInfo = JSON.parse(userInfo);

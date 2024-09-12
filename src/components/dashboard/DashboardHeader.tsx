@@ -1,5 +1,4 @@
 'use client'
-/* eslint-disable no-underscore-dangle */
 import { useMutation } from 'convex/react';
 import { useRouter } from 'next/navigation';
 import type { Dispatch, SetStateAction } from 'react';
@@ -254,7 +253,7 @@ const DashboardHeader = (props: DashboardHeaderProps) => {
           <img src="/img/alarm.png" className="size-5" alt="alarm.png" />
         </div>
 
-        {user?.type === 0 && (
+        {user.type === 0 && (
           <Popover open={isOpen} onOpenChange={setIsOpen}>
             <PopoverTrigger asChild>
               <Button className="border border-primary-azureBlue bg-blue-100 text-primary-azureBlue">
@@ -353,7 +352,7 @@ const DashboardHeader = (props: DashboardHeaderProps) => {
         step={step}
         setStep={setStep}
         onBack={() =>
-          request.kind === 'Surveys'
+          request.kind === 0
             ? setStep('What type of survey is required?')
             : setStep('What type of asset will this be for?')
         }

@@ -332,6 +332,7 @@ const Influencer = () => {
         <div className="mt-4 grid gap-4 sm:grid-cols-3">
           <KPICardLoading loading={loading} />
           <KPICardLoading loading={loading} />
+          <KPICardLoading loading={loading} />
           {vendorKPI.map((KPI) => (
             <KPICard {...KPI} key={KPI.title} />
           ))}
@@ -536,9 +537,9 @@ const Influencer = () => {
 
                       <TableCell>
                         <p className="text-lg font-semibold">{row.kind}</p>
-                        <p>{row.kind === 'Surveys' && row.survey}</p>
+                        <p>{row.kind === 1 && row.survey}</p>
                         <ul>
-                          {row.kind === 'Surveys' &&
+                          {row.kind === 1 &&
                             row.survey === 'ALTA Survey' &&
                             row.ALTAoptions.map((ALTA, ALTAindex) => (
                               <li key={ALTAindex}>
@@ -547,11 +548,11 @@ const Influencer = () => {
                             ))}
                         </ul>
                         <p>
-                          {row.kind === 'Surveys' &&
+                          {row.kind === 1 &&
                             row.survey === 'Other' &&
                             row.otherSurvey}
                         </p>
-                        <p>{row.kind === 'Assets' && row.asset}</p>
+                        <p>{row.kind === 1 && row.asset}</p>
                       </TableCell>
 
                       <TableCell>
