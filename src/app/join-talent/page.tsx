@@ -27,12 +27,10 @@ const HeaderSection = () => (
 );
 
 const TalentImage = () => (
-  <div className="relative w-full flex justify-center pt-[33%] mx-auto">
-    <Image
+  <div className="relative w-full flex justify-center mx-auto">
+    <img 
       src="https://www.cameo.com/cdn-cgi/image/fit=cover,format=auto,width=1200,height=390/https://cdn.cameo.com/resizer/92552ae9-4564-415b-93b5-42d7c3b4e454.png"
       alt="talent"
-      layout="fill"
-      objectFit="cover"
     />
   </div>
 );

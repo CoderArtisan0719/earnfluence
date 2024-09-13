@@ -250,7 +250,7 @@ const DashboardHeader = (props: DashboardHeaderProps) => {
 
       <div className="flex items-center">
         <div className="mr-8 cursor-pointer rounded-lg border border-slate-500 p-2 hover:bg-slate-50">
-          <img src="/img/alarm.png" className="size-5" alt="alarm.png" />
+          <img src="/img/alarm.png" className="size-5" alt="alarm.png" style={{filter: 'invert(1)'}}/>
         </div>
 
         {user?.type === 0 && (

@@ -129,7 +129,7 @@ const VendorActive = () => {
 
       <div className="overflow-auto px-8 pt-16 lg:col-span-3 lg:h-screen xl:col-span-5">
         <DashboardHeader title="Active Bids" />
-
+        
         <div className="mb-96 mt-8 rounded-xl border-2">
           <div className="flex justify-between border-b px-8 py-4">
             <div className="flex items-center text-xl">Active Bids</div>
@@ -140,7 +140,7 @@ const VendorActive = () => {
                   <svg
                     className="size-4 text-gray-500 dark:text-gray-400"
                     aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns="https://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 20 20"
                   >
