@@ -352,7 +352,7 @@ const DashboardHeader = (props: DashboardHeaderProps) => {
         step={step}
         setStep={setStep}
         onBack={() =>
-          request.kind === 'Surveys'
+          request.kind === 0
             ? setStep('What type of survey is required?')
             : setStep('What type of asset will this be for?')
         }

@@ -61,7 +61,7 @@ const DashboardSidebar = (props: DashboardSidebarProps) => {
       const userWithPhoto = { ...parsedUserInfo, photo: getPhotoUrl.href };
       setUser(userWithPhoto);
 
-      if (parsedUserInfo.type === 'client') {
+      if (parsedUserInfo.type === 0) {
         setMenuItems([
           {
             title: 'Dashboard',
@@ -74,22 +74,22 @@ const DashboardSidebar = (props: DashboardSidebarProps) => {
             link: '/client/active',
           },
         ]);
-      } else if (parsedUserInfo.type === 'vendor') {
+      } else if (parsedUserInfo.type === 1) {
         setMenuItems([
           {
             title: 'Dashboard',
             icon: <LayersIcon />,
-            link: '/vendor',
+            link: '/influencer',
           },
           {
             title: 'Active Bids',
             icon: <PlayIcon />,
-            link: '/vendor/active',
+            link: '/influencer/active',
           },
           {
             title: 'Payments',
             icon: <span className="px-1">$</span>,
-            link: '/vendor/transaction',
+            link: '/influencer/transaction',
           },
         ]);
       }

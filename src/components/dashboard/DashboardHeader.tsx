@@ -1,6 +1,6 @@
 'use client'
 import { useMutation } from 'convex/react';
-import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import type { Dispatch, SetStateAction } from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -47,7 +47,7 @@ const DashboardHeader = (props: DashboardHeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [request, setRequest] = useState<RequestType>(defaultRequest);
 
-  const router = useRouter();
+  const router = usePathname();
 
   const dispatch = useDispatch();
   const req = useSelector((state: RootState) => state.request);
@@ -245,7 +245,7 @@ const DashboardHeader = (props: DashboardHeaderProps) => {
     <div className="flex items-center justify-between">
       <div className="text-4xl font-bold">
         {props.title}
-        {router.route.includes('active') ? ` (${total})` : ''}
+        {router.includes('active') ? ` (${total})` : ''}
       </div>
 
       <div className="flex items-center">
@@ -253,7 +253,7 @@ const DashboardHeader = (props: DashboardHeaderProps) => {
           <img src="/img/alarm.png" className="size-5" alt="alarm.png" />
         </div>
 
-        {user.type === 0 && (
+        {user?.type === 0 && (
           <Popover open={isOpen} onOpenChange={setIsOpen}>
             <PopoverTrigger asChild>
               <Button className="border border-primary-azureBlue bg-blue-100 text-primary-azureBlue">

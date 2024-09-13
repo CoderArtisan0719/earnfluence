@@ -69,9 +69,9 @@ const DashboardSidebar = (props: DashboardSidebarProps) => {
   }, [props.success]);
 
   return (
-    <div className={`${props.className} flex flex-col justify-between bg-gray-800`}>
+    <div className={`${props.className} flex flex-col justify-between`}>
       <div>
-        <div className="mt-8 flex cursor-pointer items-center overflow-hidden rounded-lg py-4 pl-2 hover:bg-gray-400">
+        <div className="mt-8 flex cursor-pointer items-center overflow-hidden rounded-lg py-4 pl-2 hover:bg-gray-800">
           <div className="size-12 flex-none rounded-full">
             <Avatar className="size-full">
               <AvatarImage className="border-none" src={user?.photo} />

@@ -8,7 +8,7 @@ type InfoType = {
 };
 
 type UserType = {
-  // type: number;
+  type: number;
   email: string;
   fullname: string;
   photo?: Id<'_storage'>;
@@ -19,6 +19,7 @@ type UserType = {
 interface UserTableType extends UserType {
   _id: Id<'talents'>;
   _creationTime: number;
+  // type: number
 }
 
 type RequestType = {
@@ -44,6 +45,11 @@ type RequestType = {
   receivedUsers: Id<'talents'>[];
   requestUser: UserType;
   status: string;
+  requestUser?: {
+    fullname: string;
+    email: string;
+    creationTime: number
+  }
 };
 
 interface RequestTableType extends RequestType {

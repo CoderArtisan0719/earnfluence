@@ -1,11 +1,11 @@
 'use client'
 import { useMutation } from 'convex/react';
-import router from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
 import Meta from '@/components/common/Meta';
 import DashboardHeader from '@/components/dashboard/DashboardHeader';
-import DashboardSidebar from '@/components/dashboard/DashboardSidebar';
+import DashboardSidebar from "@/components/ui/dashboard-sidebar";
 import TableLoading from '@/components/loading/TableLoading';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -25,6 +25,8 @@ import { api } from '../../../../convex/_generated/api';
 import type { Id } from '../../../../convex/_generated/dataModel';
 
 const VendorActive = () => {
+
+  const router = useRouter()
   const [tableLoading, setTableLoading] = useState(false);
   const [bids, setBids] = useState<BidType[]>([]);
   const [filter, setFilter] = useState('');
@@ -75,7 +77,7 @@ const VendorActive = () => {
     if (!userInfo) router.push('/auth/signin/vendor');
     else {
       const parsedUserInfo = JSON.parse(userInfo);
-      if (parsedUserInfo.type !== 'vendor') router.push('/error/access');
+      if (parsedUserInfo.type !== 1) router.push('/error/access');
       setUser(parsedUserInfo);
     }
   }, []);
@@ -123,7 +125,7 @@ const VendorActive = () => {
     <div className="grid gap-8 lg:grid-cols-4 xl:grid-cols-6">
       <Meta title="vendor" />
 
-      <DashboardSidebar className="bg-gray-100 px-4 pt-12" />
+      <DashboardSidebar className="px-4 pt-12" />
 
       <div className="overflow-auto px-8 pt-16 lg:col-span-3 lg:h-screen xl:col-span-5">
         <DashboardHeader title="Active Bids" />

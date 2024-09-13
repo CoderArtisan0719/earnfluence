@@ -1,3 +1,4 @@
+'use client'
 import type { Metadata } from "next";
 import { Provider } from 'react-redux';
 
@@ -9,10 +10,10 @@ import { AuthProvider } from "./provider/AuthContext";
 import store from '@/store';
 
 
-export const metadata: Metadata = {
-  title: "earnfluence",
-  description: "earnfluence",
-};
+// export const metadata: Metadata = {
+//   title: "earnfluence",
+//   description: "earnfluence",
+// };
 
 export default function RootLayout({
   children,
@@ -23,7 +24,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body>
-        {/* <Provider store={store}> */}
+        <Provider store={store}>
           <AuthProvider>
             <ConvexClientProvider>
               <ThemeProvider
@@ -36,7 +37,7 @@ export default function RootLayout({
               </ThemeProvider>
             </ConvexClientProvider>
           </AuthProvider>
-        {/* </Provider> */}
+        </Provider>
       </body>
     </html>
   );

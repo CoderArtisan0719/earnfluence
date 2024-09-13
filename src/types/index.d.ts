@@ -66,6 +66,11 @@ export type RequestType = {
   receivedUsers: Id<'users'>[];
   requestUser: UserType;
   status: string;
+  requestUser?: {
+    fullname: string;
+    email: string,
+    creationTime: number;
+  }
 };
 
 export interface RequestTableType extends RequestType {
