@@ -14,9 +14,12 @@ const Categories = () => {
               key={index}
             >
               <div className="flex flex-col w-36 h-36 overflow-hidden rounded-full relative border border-white group">
-                <img
+              <Image
                   src={star.url}
                   alt={star.alt}
+                  width={300}
+                  height={300}
+                  className="w-full h-full object-cover absolute top-0 left-0"
                 />
               </div>
               <span className="text-sm font-medium leading-none">{ star.content }</span>

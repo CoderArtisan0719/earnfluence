@@ -15,6 +15,7 @@ export default defineSchema({
     dob: v.string(),
     country: v.string(),
     displayName: v.string(),
+    photo: v.optional(v.id('_storage')),
     fullname: v.string(),
     follow: v.string(),
     followRange: v.string(),

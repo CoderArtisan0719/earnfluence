@@ -1,12 +1,12 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
-import { useAuthToken } from '@convex-dev/auth/react';
+
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
 import { useMutation } from 'convex/react';
-import { jwtDecode } from 'jwt-decode';
-import { useRouter } from 'next/router';
+// import { jwtDecode } from 'jwt-decode';
+import { useRouter } from 'next/navigation';
 import type { Dispatch, SetStateAction } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, use } from 'react';
 import { toast } from 'sonner';
 
 import { Input } from '@/components/ui/input';
@@ -24,7 +24,7 @@ const Deposit = (props: DepositProps) => {
   const [amount, setAmount] = useState(15);
   const [update, setUpdate] = useState(true);
 
-  const token = useAuthToken();
+  // const token = useAuthToken();
   const userMutation = useMutation(api.users.getById);
   const transactionMutation = useMutation(api.transactions.deposit);
 
@@ -40,24 +40,26 @@ const Deposit = (props: DepositProps) => {
 
   const router = useRouter();
 
-  const fetchUser = async () => {
-    if (token) {
-      const userId = jwtDecode(String(token))?.sub?.split('|')[0];
-      try {
-        const res = await userMutation({ userId: userId as Id<'users'> });
-        sessionStorage.setItem('userInfo', JSON.stringify(res));
-      } catch (err) {
-        toast.error(`Error fetching user: ${err || 'Unknown error'}`);
-      }
-    }
-  };
+  // const fetchUser = async () => {
+  //   if (token) {
+  //     const userId = jwtDecode(String(token))?.sub?.split('|')[0];
+  //     try {
+  //       const res = await userMutation({ userId: userId as Id<'users'> });
+  //       sessionStorage.setItem('userInfo', JSON.stringify(res));
+  //     } catch (err) {
+  //       toast.error(`Error fetching user: ${err || 'Unknown error'}`);
+  //     }
+  //   }
+  // };
+
+  const paypalContainerRef = useRef(null)
 
   useEffect(() => {
     if (update) {
-      fetchUser();
+      // fetchUser();
       setUpdate(false);
     }
-  }, [update, token, props.user]);
+  }, [update, props.user]);
 
   useEffect(() => {
     const userInfo = sessionStorage.getItem('userInfo');
@@ -69,6 +71,8 @@ const Deposit = (props: DepositProps) => {
       props.setUser?.(parsedUserInfo);
     }
   }, [router]);
+
+
 
   return (
     <div className="grid flex-1 gap-4 pt-6">
@@ -82,45 +86,48 @@ const Deposit = (props: DepositProps) => {
       />
 
       <PayPalScriptProvider options={initialOptions}>
-        <PayPalButtons
-          forceReRender={[initialOptions]}
-          createOrder={async (_data, actions) => {
-            return actions.order.create({
-              intent: 'CAPTURE',
-              purchase_units: [
-                {
-                  amount: {
-                    value: String(amount),
-                    currency_code: 'USD',
+        <div className='mypaypal-container'>
+          <PayPalButtons
+            style={{  }}
+            forceReRender={[initialOptions]}
+            createOrder={async (_data, actions) => {
+              return actions.order.create({
+                intent: 'CAPTURE',
+                purchase_units: [
+                  {
+                    amount: {
+                      value: String(amount),
+                      currency_code: 'USD',
+                    },
                   },
-                },
-              ],
-            });
-          }}
-          onApprove={async () => {
-            // Process the transaction
-            try {
-              const newUser = await transactionMutation({
-                clientId: props.user!._id,
-                amount,
+                ],
               });
-              if (newUser) {
-                props.setUser?.({
-                  ...newUser,
-                  creationTime: newUser._creationTime,
+            }}
+            onApprove={async () => {
+              // Process the transaction
+              try {
+                const newUser = await transactionMutation({
+                  clientId: props.user!._id,
+                  amount,
                 });
-                setUpdate((prev) => !prev);
-                toast.success('Deposit successful!'); // Success feedback
+                if (newUser) {
+                  props.setUser?.({
+                    ...newUser,
+                    creationTime: newUser._creationTime,
+                  });
+                  setUpdate((prev) => !prev);
+                  toast.success('Deposit successful!'); // Success feedback
+                }
+              } catch (error) {
+                toast.error(`Error processing transaction: ${error}`);
               }
-            } catch (error) {
-              toast.error(`Error processing transaction: ${error}`);
-            }
-          }}
-          onError={(err) => {
-            console.error('PayPal Checkout onError', err);
-            toast.error(`Error: ${err.message}`); // Display error
-          }}
-        />
+            }}
+            onError={(err) => {
+              console.error('PayPal Checkout onError', err);
+              toast.error(`Error: ${err.message}`); // Display error
+            }}
+          />
+        </div>
       </PayPalScriptProvider>
     </div>
   );

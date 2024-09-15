@@ -13,20 +13,14 @@ const GiftsForBudget = () => {
               className="w-1/4 flex flex-col h-44 overflow-hidden relative group rounded-xl cursor-pointer"
               key={index}
             >
-              <img 
-                src={gift.url}
-                alt={gift.alt}
-
-                className="h-full"
-              />
-              {/* <Image
+              <Image
                 src={gift.url}
                 alt={gift.alt}
                 layout="fill"
                 objectFit="strech"
                 objectPosition="center top"
                 className=""
-              /> */}
+              />
             </div>
           )}
       </div>

@@ -1,5 +1,14 @@
 module.exports = {
   images: {
+    domains: [
+      "aceternity.com",
+      "images.unsplash.com",
+      "unsplash.com",
+      "www.cameo.com",
+      "assets.aceternity.com",
+      "cdn.cameo.com",
+      "d3el26csp1xekx.cloudfront.net",
+    ],
     remotePatterns: [
       {
         protocol: "https",

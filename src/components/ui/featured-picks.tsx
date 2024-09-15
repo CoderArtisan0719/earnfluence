@@ -19,7 +19,6 @@ const FeaturedPicks = () => {
                 layout="fill"
                 objectFit="strech"
                 objectPosition="center top"
-                className=""
               />
             </div>
         )}

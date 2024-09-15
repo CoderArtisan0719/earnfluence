@@ -95,3 +95,13 @@
 .react-tel-input .country-list .country:hover {
   background-color: rgb(80, 123, 147) !important;
 }
+
+.paypal-button-container {
+  background-color: var(--background) !important;
+  border: 1px solid red;
+}
+
+.paypal-container {
+  background-color: var(--background) !important;
+  border: 1px solid red;
+}

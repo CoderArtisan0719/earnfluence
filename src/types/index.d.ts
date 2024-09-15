@@ -39,7 +39,7 @@ type UserType = {
 };
 
 export interface UserTableType extends UserType {
-  _id: Id<'users'>;
+  _id: Id<'talents'>;
   _creationTime: number;
 }
 

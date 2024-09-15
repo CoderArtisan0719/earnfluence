@@ -44,6 +44,7 @@ const DashboardSidebar = (props: DashboardSidebarProps) => {
     
     if (userInfo) {
       const parsedUserInfo = JSON.parse(userInfo);
+      debugger
       setUser(parsedUserInfo);
       console.log(parsedUserInfo, 'pased')
       if (parsedUserInfo) {
