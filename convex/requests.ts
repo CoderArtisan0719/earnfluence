@@ -78,7 +78,7 @@ export const getAvailable = mutation({
         }),
       );
 
-      return { resolvedRequests, total, totalFiltered };
+      return { resolvedRequests, total, totalFiltered, filteredRequests };
     } catch (error) {
       console.error('Error fetching requests by user ID:', error);
       throw new Error(`Unable to fetch requests: ${error}`);

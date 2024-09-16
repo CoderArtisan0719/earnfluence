@@ -109,13 +109,14 @@ const Influencer = () => {
 
     setLoading(true);
 
+    
     reqMutation({
       filter: debouncedFilter,
       page: 0,
       perpage: 0,
     }).then((res: { resolvedRequests: RequestTableType[]; total: number }) => {
       myBidMutation({
-        vendorId: parsedUserInfo._id as Id<'users'>,
+        vendorId: parsedUserInfo._id as Id<'talents'>,
         filter,
         page,
         perpage,
@@ -291,7 +292,7 @@ const Influencer = () => {
       filter: debouncedFilter,
       page,
       perpage,
-    }).then((res: { resolvedRequests: RequestTableType[]; total: number }) => {
+    }).then((res: { resolvedRequests: RequestTableType[]; total: number, filteredRequests: any }) => {
       setTableLoading(false);
 
       const temp = res.resolvedRequests.map((request) => {
