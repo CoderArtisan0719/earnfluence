@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input"
 
 const MailingList = () => {
   return (
-    <div className="w-1/3">
+    <div className="w-1/3 border">
       <h2 className="font-medium">Join our mailing list</h2>
       <p className="pb-6 pt-2">Be the first to know about the newest stars and best deals on Cameo</p>
       <div className="flex w-full items-center space-x-2">

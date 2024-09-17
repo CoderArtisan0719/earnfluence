@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Provider } from 'react-redux';
 
 import "./globals.css";
+import '@radix-ui/themes/styles.css';
+
 import "react-phone-input-2/lib/style.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { ConvexClientProvider } from "./provider/ConvexClientProvider";
@@ -24,20 +26,22 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body>
-        <Provider store={store}>
-          <AuthProvider>
-            <ConvexClientProvider>
-              <ThemeProvider
-                attribute="class"
-                defaultTheme="dark"
-                enableSystem
-                disableTransitionOnChange
-              >
-                {children}
-              </ThemeProvider>
-            </ConvexClientProvider>
-          </AuthProvider>
-        </Provider>
+        <div className="max-w-[1440px] m-auto">
+          <Provider store={store}>
+            <AuthProvider>
+              <ConvexClientProvider>
+                <ThemeProvider
+                  attribute="class"
+                  defaultTheme="dark"
+                  enableSystem
+                  disableTransitionOnChange
+                >
+                  {children}
+                </ThemeProvider>
+              </ConvexClientProvider>
+            </AuthProvider>
+          </Provider>
+        </div>
       </body>
     </html>
   );

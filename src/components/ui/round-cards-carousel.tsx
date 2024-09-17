@@ -92,8 +92,9 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
       value={{ onCardClose: handleCardClose, currentIndex }}
     >
       <div className="relative w-full">
-        <div className="flex justify-between items-center gap-2 mr-10">
-          <h2 className="text-xl font-bold">Today's top 10</h2>
+        <h2 className="text-3xl font-bold">Actors</h2>
+        <div className="flex justify-between items-center gap-2 mr-10 mt-[10px]">
+          <h1 className="text-xl font-bold">Explore</h1>
           <div className="flex gap-2">
             <button
               className="relative z-40 h-10 w-10 rounded-full bg-black flex items-center justify-center border border-white hover:bg-gray-700"
@@ -114,7 +115,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
         </div>
         
         <div
-          className="flex w-full overflow-x-scroll overscroll-x-auto py-5 scroll-smooth [scrollbar-width:none] border"
+          className="flex w-full overflow-x-scroll overscroll-x-auto py-5 scroll-smooth [scrollbar-width:none]"
           ref={carouselRef}
           onScroll={checkScrollability}
         >
@@ -127,11 +128,11 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
           <div
             className={cn(
               "flex flex-row justify-start gap-8 pl-4",
-              "max-w-7xl mx-auto" // remove max-w-4xl if you want the carousel to span the full width of its container
+              "mx-auto" // remove max-w-4xl if you want the carousel to span the full width of its container
             )}
           >
             {items.map((item, index) => (
-              <div className="flex flex-col">
+              <div className="flex flex-col" key={index}>
                 <motion.div
                   initial={{
                     opacity: 0,
@@ -152,18 +153,6 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                 >
                   {item}
                 </motion.div>
-                <div className="flex flex-col gap-1 mt-2">
-                  <p className="text-sm font-medium">James Buckley</p>
-                  <p className="text-sm text-gray-400">Actor - The Inbetweeners</p>
-                  <div className="flex items-center">
-                    <IconStarFilled size={12} color="yellow" />
-                    <span className="font-medium text-sm px-1">5.00</span>
-                    <span className="text-sm text-gray-400 mr-2">(10233)</span>
-                    <IconBolt size={12} color="yellow" />
-                    <span className="font-medium text-sm px-1">24hr</span>
-                  </div>
-                  <p className="font-medium text-sm px-1">$50</p>
-                </div>
               </div>
             ))}
           </div>
@@ -183,10 +172,10 @@ export const Card = ({
   layout?: boolean;
 }) => {
   return (
-    <>
+    <div className="w-max">
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
-        className="rounded-xl bg-gray-100 dark:bg-neutral-900 h-64 w-52 overflow-hidden flex flex-col items-start justify-start relative z-10"
+        className="rounded-full bg-gray-100 dark:bg-neutral-900 h-[106px] w-[106px] overflow-hidden flex flex-col items-start justify-start relative z-10"
       >
         <BlurImage
           src={card.src}
@@ -195,7 +184,8 @@ export const Card = ({
           className="object-cover absolute z-10 inset-0"
         />
       </motion.button>
-    </>
+      <p className="text-center font-bold text-sm mt-[10px]">{card.category}</p>
+    </div>
   );
 };
 

@@ -7,7 +7,7 @@ import { IconBrandInstagram, IconBrandTiktok, IconBrandTwitter, IconBrandFaceboo
 
 const ContactInfo = () => {
   return (
-    <div className="w-1/2">
+    <div className="flex-1" >
       <div className="flex w-full">
         {
           ContactInfoData.map((c, index) => 

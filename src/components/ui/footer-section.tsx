@@ -7,7 +7,7 @@ import Footer from "./footer";
 const FooterSection = () => {
   return (
     <React.Fragment>
-      <div className="px-12 py-8 flex justify-between">
+      <div className="px-12 py-8 flex justify-between flex-col :flex-row gap-[40px]">
           <MailingList />
           <ContactInfo />
         </div>
