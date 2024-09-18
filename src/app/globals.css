@@ -154,3 +154,23 @@ body {
   font-variation-settings:
     "wdth" 100;
 }
+
+
+.gradient-div-after::after {
+  content: "";
+  display: block;
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 40%);
+  position: absolute;
+  inset: 0px;
+  z-index: 10;
+}
+
+.gradient-div-before::before {
+  content: "";
+  display: block;
+  background: linear-gradient(0deg, rgba(0,0,0,1) 60%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 40%);
+  position: absolute;
+  inset: 0px;
+  z-index: 10;
+}
