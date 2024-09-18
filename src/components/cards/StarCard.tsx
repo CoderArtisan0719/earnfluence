@@ -13,17 +13,19 @@ interface StarCardProps {
 
 const StarCard = ({ star }: StarCardProps) => {
     return (
-        <div className="w-[200px] rounded-[15px] overflow-hidden mb-[10px]">
+        <div className="rounded-[15px] overflow-hidden mb-[10px]">
 
-            <Image
-                src={star.img}
-                alt={star.name}
-                layout="intrinsic"
-                width={1000}
-                height={500}
-                style={{ aspectRatio: '5 / 6' }}
-                className="last:pr-[5%] md:last:pr-[33%]  rounded-3xl w-[300px] h-[360px]"
-            />
+            <div className="relative w-full pb-[120%] border rounded-3xl overflow-hidden">
+                <Image
+                    src={star.img}
+                    alt={star.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    style={{ objectFit: "cover" }}
+                    className="hover:scale-105 transition-all duration-300"
+                />
+            </div>
+
             <div className="flex flex-col gap-1 mt-2">
                 <p className="text-sm font-medium">James Buckley</p>
                 <p className="text-sm text-gray-400">Actor - The Inbetweeners</p>

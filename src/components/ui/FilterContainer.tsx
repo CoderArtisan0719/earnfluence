@@ -60,7 +60,7 @@ const FilterContainer = ({types, filterPrice, setFilterPrice}: FilterContainerPr
                         <input type="text" className="bg-[rgb(48, 45, 52)] border-none outline-none h-[44px] border-[1.5px] border-[3F3B45] w-full rounded-full text-[16px] pl-[40px]" />
                     </div>
 
-                    <div className="px-[10px] overflow-auto max-h-[250px] my-[20px]">
+                    <div className="scrollable-div px-[10px] overflow-auto max-h-[250px] my-[20px]">
                         {
                             types.map((type, index) => (
                                 <label key={index} className="flex justify-between items-center" id={`card-${type}`}>

@@ -1,7 +1,6 @@
 'use client'
 
-import { useState, useEffect } from "react"
-import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
+import { useEffect } from "react"
 
 import { StarProps } from "./ExploreContainer"
 import StarCard from "../cards/StarCard"
@@ -9,8 +8,6 @@ import StarCard from "../cards/StarCard"
 interface StarsListProps {
     stars: StarProps[],
     className: string,
-    paginate: number,
-    length: number
     setPaginate: (num: {num: number}) => void,
 }
 
@@ -22,21 +19,15 @@ const StarsList = (props: StarsListProps) => {
 
     return (
         <div className="">
-            <div className="w-full grid justify-start items-start flex-wrap gap-[1%]" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(200px, auto))"}}>
+            <div className="w-full grid justify-start items-start flex-wrap gap-[10px]" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))"}}>
                 {
                     props.stars.map((star, index) => (
-                        <StarCard key={index} star={star} className="" />
+                        <StarCard key={index} star={star} className="w-full" />
                     ))
                 }
             </div>
 
-            <div className="flex justify-center items-center gap-[10px] text-[20px] mt-[30px]">
-                <BsArrowLeftCircle  className="cursor-pointer" onClick={() => props.setPaginate(props.paginate - 1)} />
-                <p>
-                    {`Page ${props.paginate} of ${props.length}`}
-                </p>
-                <BsArrowRightCircle className="cursor-pointer" onClick={() => props.setPaginate(props.paginate + 1)} />
-            </div>
+            
         </div>
     )
 }

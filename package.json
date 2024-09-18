@@ -34,6 +34,7 @@
     "class-variance-authority": "^0.7.0",
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
+    "colorthief": "^2.4.0",
     "convex": "^1.15.0",
     "country-list": "^2.3.0",
     "date-fns": "^3.6.0",

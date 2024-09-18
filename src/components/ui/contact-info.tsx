@@ -30,7 +30,7 @@ const ContactInfo = () => {
           )
         }
       </div>
-      <div className="w-full pt-4 flex justify-between">
+      <div className="w-full pt-4 flex justify-between flex-wrap gap-[10px]">
         <Image
           src="https://apple-resources.s3.amazonaws.com/media-badges/download-on-the-app-store/black/en-us.svg"
           alt="Macbook mockup from Aceternity UI"
