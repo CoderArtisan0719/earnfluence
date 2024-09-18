@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -69,6 +67,7 @@
     @apply bg-background text-foreground;
   }
 }
+
 
 .react-tel-input .flag-dropdown.open { 
   background-color: transparent; 
@@ -145,14 +144,6 @@ body {
 
 .scrollable-div::-webkit-scrollbar {
   display: none;
-}
-
-.bricolage-grotesque {
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
 }
 
 

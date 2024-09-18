@@ -1,5 +1,10 @@
 import { useState } from "react";
 
+import React from 'react';
+import {Bricolage_Grotesque} from 'next/font/google'
+
+const inter = Bricolage_Grotesque({ subsets: ['latin'] })
+
 const Faq = () => {
 
     const [selFlg, setSelFlg] = useState(-1);
@@ -43,11 +48,11 @@ const Faq = () => {
     return (
         <div className="flex justify-center mt-[100px]">
             <div className="">
-                <h1 className="text-4xl font-bold">Frequently Asked Questions</h1>
+                <h1 className="text-4xl font-bold" style={{...inter.style}}>Frequently Asked Questions</h1>
                 <div className="w-[800px] mt-[20px]">
                     {
                         faqs.map((item, index) => (
-                            <div key={index} className="rounded-[20px] p-[32px] bg-[#323035] mb-[30px] cursor-pointer" onClick={() => {
+                            <div key={index} className="rounded-[20px] p-[32px] bg-[#323035] mb-[10px] cursor-pointer" onClick={() => {
                                 if (index === selFlg) setSelFlg(-1)
                                 else setSelFlg(index)
                             }}>

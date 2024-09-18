@@ -1,3 +1,7 @@
+import {Bricolage_Grotesque} from 'next/font/google'
+
+const inter = Bricolage_Grotesque({ subsets: ['latin'] })
+
 const HowCameoWorks = () => {
 
     const data = [
@@ -14,7 +18,7 @@ const HowCameoWorks = () => {
             icon: <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM51.31,160,136,75.31,152.69,92,68,176.68ZM48,179.31,76.69,208H48Zm48,25.38L79.31,188,164,103.31,180.69,120Zm96-96L147.31,64l24-24L216,84.68Z"></path></svg>
         },
         {
-            txt: "Find a celebrity",
+            txt: "Share it with loved ones",
             color: "#E4C1FF",
             bgColor: "#451236",
             icon: <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" viewBox="0 0 256 256"><path d="M178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40ZM128,214.8C109.74,204.16,32,155.69,32,102A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,155.61,146.24,204.15,128,214.8Z"></path></svg>
@@ -23,12 +27,17 @@ const HowCameoWorks = () => {
 
     return (
         <div className="text-center mb-[20px] mt-[50px]">
-            <h1 className="text-[50px] font-[800]">How Cameo Work</h1>
+            <h1 className="text-[40px] font-[800]" style={{...inter.style}}>How Cameo Work</h1>
 
             <div className="flex justify-between items-center gap-[10px] mt-[35px]">
              {
                 data.map((item, index) => (
-                    <div key={index} className={`flex flex-col items-center flex-1 rounded-full py-[40px] px-[24px] text-center bg-[${item.bgColor}] text-[${item.color}]`}>
+                    <div key={index} className={`flex flex-col items-center flex-1 rounded-full py-[40px] px-[24px] text-center`}
+                        style={{
+                            backgroundColor: item.bgColor,
+                            color: item.color
+                        }}
+                    >
                         <div className="">
                             {
                                 item.icon

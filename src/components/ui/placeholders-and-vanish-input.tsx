@@ -178,8 +178,8 @@ export function PlaceholdersAndVanishInput({
   return (
     <form
       className={cn(
-        "w-full relative max-w-xl mx-auto bg-white dark:bg-zinc-800 h-10 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200",
-        value && "bg-gray-50"
+        "w-full relative max-w-xl mx-auto dark:bg-zinc-800 h-10 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200",
+        value && "bg-[#302730]"
       )}
       onSubmit={handleSubmit}
     >
@@ -203,7 +203,7 @@ export function PlaceholdersAndVanishInput({
         type="text"
         // TODO
         className={cn(
-          "w-full relative text-sm sm:text-base z-50 border-none text-black bg-white text-black h-full rounded-full focus:outline-none focus:ring-0 pl-4 sm:pl-10 pr-20",
+          "w-full relative text-sm sm:text-base z-50 border-none text-white h-full rounded-full focus:outline-none focus:ring-0 pl-4 sm:pl-10 pr-20",
           animating && "text-red-600 dark:text-red-500"
         )}
       />
@@ -213,7 +213,7 @@ export function PlaceholdersAndVanishInput({
         type="submit"
         className="absolute left-2 top-1/2 z-50 -translate-y-1/2 h-8 w-8 transition duration-200 flex items-center justify-center"
       >
-        <IconSearch color="black" />
+        <IconSearch color="white" />
       </button>
 
       <div className="absolute z-50 inset-0 flex items-center rounded-full pointer-events-none">
@@ -237,7 +237,7 @@ export function PlaceholdersAndVanishInput({
                 duration: 0.3,
                 ease: "linear",
               }}
-              className="dark:text-gray-500 text-sm font-normal text-gray-500 pl-4 sm:pl-12 text-left w-[calc(100%-2rem)] truncate"
+              className="dark:text-gray-500 text-sm font-normal text-white pl-4 sm:pl-12 text-left w-[calc(100%-2rem)] truncate"
             >
               {placeholders[currentPlaceholder]}
             </motion.p>

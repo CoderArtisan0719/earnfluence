@@ -8,6 +8,7 @@ import FantasyStars from "@/components/ui/fantasyStars"
 import ExploreStars from "@/components/ui/exploreStars";
 import HowCameoWorks from "@/components/ui/howCameoWorks"
 import Faq from "@/components/ui/faq"
+import BottomSticky from "@/components/bottom-sticky"
 
 type startype = {
     img: string,
@@ -99,6 +100,7 @@ const Page = () => {
                 </div>
                 <FooterSection />
             </div>
+            <BottomSticky />
         </React.Fragment>
     )
 }

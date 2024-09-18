@@ -1,6 +1,14 @@
-import React from 'react'
+'use client'
+
+import React, {useEffect} from 'react';
+import {Bricolage_Grotesque} from 'next/font/google'
+
+const inter = Bricolage_Grotesque({ subsets: ['latin'] })
 
 const FantasyFootballBrand = () => {
+    useEffect(() => {
+        console.log("Bri: ", inter);
+    }, [])
     return (
         <React.Fragment>
             <div
@@ -12,7 +20,7 @@ const FantasyFootballBrand = () => {
                     lg:aspect-[2048/825]
                 ` }
             >
-                <h1 className="bricolage-grotesque text-5xl text-center font-bold w-[550px] leading-[1.2]">
+                <h1 className="text-[40px] text-center font-bold w-[450px] leading-[1.2]" style={{...inter.style, letterSpacing: "-3px"}}>
                     Win over your Fantasy league with a Cameo from your favorite celeb
                 </h1>
             </div>

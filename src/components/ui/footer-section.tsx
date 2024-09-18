@@ -8,9 +8,9 @@ const FooterSection = () => {
   return (
     <React.Fragment>
       <div className="px-12 py-8 flex justify-between gap-[40px]">
-          <MailingList />
-          <ContactInfo />
-        </div>
+        <MailingList />
+        <ContactInfo />
+      </div>
       <Separator className="my-4 bg-pink-200 opacity-20" />
       <Footer />
     </React.Fragment>
