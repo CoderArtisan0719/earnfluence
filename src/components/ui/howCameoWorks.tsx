@@ -29,9 +29,11 @@ const HowCameoWorks = () => {
              {
                 data.map((item, index) => (
                     <div key={index} className={`flex flex-col items-center flex-1 rounded-full py-[40px] px-[24px] text-center bg-[${item.bgColor}] text-[${item.color}]`}>
-                        {
-                            item.icon
-                        }
+                        <div className="">
+                            {
+                                item.icon
+                            }
+                        </div>
                         <p className={`text-[32px] font-bold`}>{item.txt}</p>
                     </div>
                 ))
