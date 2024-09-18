@@ -90,7 +90,7 @@ const Page = () => {
                     <ExploreStars title="Trash talk your matchup" stars={stars} />
                     <ExploreStars title="Get advice on your roster" stars={stars} />
 
-                    <Link href={"#"} className="block w-full px-[32px] py-[16px] border border-white rounded-full text-center font-bold hover:bg-gray-800">
+                    <Link href={"/browse/actors"} className="block w-full px-[32px] py-[16px] border border-white rounded-full text-center font-bold hover:bg-gray-800">
                         View all talent picks
                     </Link>
                     <HowCameoWorks />
