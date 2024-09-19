@@ -8,7 +8,7 @@ const MailingList = () => {
       <h2 className="font-medium">Join our mailing list</h2>
       <p className="pb-6 pt-2">Be the first to know about the newest stars and best deals on Cameo</p>
       <div className="flex w-full items-center space-x-2">
-        <Input type="email" placeholder="Email" />
+      <Input type="email" placeholder="Email" />
         <Button type="submit">Join</Button>
       </div>
       <div className="flex flex-col gap-4 mt-6">
