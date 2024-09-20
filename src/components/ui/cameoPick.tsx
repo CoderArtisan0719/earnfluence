@@ -114,7 +114,7 @@ const CameoPick = () => {
                     <div className="flex justify-start items-center flex-wrap gap-[10px] mt-[15px]">
                         {
                             reasons.map((reason, index) => (
-                                <Link href={reason.url} key={index} className="flex items-center justify-center gap-[5px] rounded-full p-[12px] border border-[#F2F1F399] font-bold">
+                                <Link href={reason.url} key={index} className="flex items-center justify-center gap-[5px] rounded-full p-[12px] border border-[#F2F1F399] font-bold hover:bg-[#F2F1F314]">
                                     {reason.txt}
                                 </Link>
                             ))

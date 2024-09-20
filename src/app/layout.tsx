@@ -1,6 +1,9 @@
 'use client'
 import type { Metadata } from "next";
 import { Provider } from 'react-redux';
+import * as Dialog from '@radix-ui/react-dialog';
+import { Cross2Icon } from '@radix-ui/react-icons';
+
 
 import "./globals.css";
 import '@radix-ui/themes/styles.css';
@@ -26,22 +29,24 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body>
-        <div className="max-w-[1440px] m-auto">
-          <Provider store={store}>
-            <AuthProvider>
-              <ConvexClientProvider>
-                <ThemeProvider
-                  attribute="class"
-                  defaultTheme="dark"
-                  enableSystem
-                  disableTransitionOnChange
-                >
-                  {children}
-                </ThemeProvider>
-              </ConvexClientProvider>
-            </AuthProvider>
-          </Provider>
-        </div>
+        <Dialog.Root>
+          <div className="max-w-[1440px] m-auto">
+            <Provider store={store}>
+              <AuthProvider>
+                <ConvexClientProvider>
+                  <ThemeProvider
+                    attribute="class"
+                    defaultTheme="dark"
+                    enableSystem
+                    disableTransitionOnChange
+                  >
+                    {children}
+                  </ThemeProvider>
+                </ConvexClientProvider>
+              </AuthProvider>
+            </Provider>
+          </div>
+        </Dialog.Root>
       </body>
     </html>
   );

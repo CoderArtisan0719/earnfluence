@@ -6,7 +6,7 @@ const WhatTOChat = () => {
                 <h1 className="text-2xl font-bold">What to chat?</h1>
                 <span role="img" aria-label="dialog">💬</span>
             </div>
-            <Link className="block w-full rounded-full p-[12px] border border-[#F2F1F399] text-center font-bold mt-[20px]" href={"#"}>Send a message $2.99</Link>
+            <Link className="block w-full rounded-full p-[12px] border border-[#F2F1F399] text-center font-bold mt-[20px] hover:bg-[#F2F1F314]" href={"#"}>Send a message $2.99</Link>
         </div>
     )
 }

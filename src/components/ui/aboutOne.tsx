@@ -1,3 +1,4 @@
+import Link from "next/link"
 interface AboutOneProps {
     name: string,
     desc: string,
@@ -19,7 +20,7 @@ const AboutOne = (person: AboutOneProps) => {
             <div className="flex justify-start items-center gap-[20px] mt-[20px]">
                 {
                     person.links.map((item, index) => (
-                        <a href={item.url} key={index} className="rounded-full px-[15px] py-[8px] border border-opacity-[0.16]">{item.name}</a>
+                        <Link href={item.url} key={index} className="rounded-full px-[15px] py-[8px] border border-opacity-[0.16] hover:bg-[#F2F1F314]">{item.name}</Link>
                     ))
                 }
             </div>
