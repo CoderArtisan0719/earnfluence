@@ -209,7 +209,7 @@ export const Card = ({
 			</div>
 			{
 				isPlaying && 
-				<Link href="#" className="absolute top-[10px] right-[10px] z-[100]">
+				<Link href="shoenice/feed/V54ozp33k" className="absolute top-[10px] right-[10px] z-[100]">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M220,48V96a12,12,0,0,1-24,0V77l-39.51,39.52a12,12,0,0,1-17-17L179,60H160a12,12,0,0,1,0-24h48A12,12,0,0,1,220,48ZM99.51,139.51,60,179V160a12,12,0,0,0-24,0v48a12,12,0,0,0,12,12H96a12,12,0,0,0,0-24H77l39.52-39.51a12,12,0,0,0-17-17Z"></path></svg>
 				</Link>
 			}
