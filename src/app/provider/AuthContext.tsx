@@ -35,7 +35,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     if (userData) {
       setUser(JSON.parse(userData));
     }
-    console.log(userData, 'usernadte')
   }, []);
 
   const login = (userData: User) => {

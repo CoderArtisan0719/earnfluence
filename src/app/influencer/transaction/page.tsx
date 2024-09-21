@@ -101,7 +101,6 @@ const ClientTransaction = () => {
         throw new Error(`Payout request failed: ${response.statusText}`);
       }
       const payoutData = await response.json();
-      console.log('Payout successful:', payoutData);
 
       const newUser = await withdrawMutation({
         userId: user!._id,

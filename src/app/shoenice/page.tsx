@@ -15,75 +15,73 @@ export type LinkType = {
     url: string
 }
 
-const Page = () => {
+export const links:LinkType[] = [
+    {
+        name: "Creators",
+        url: "#"
+    },
+    {
+        name: "Influencers",
+        url: "#"
+    },
+    {
+        name: "Youbute",
+        url: "#"
+    },
+    {
+        name: "Shoenice",
+        url: "#"
+    }
+]
 
-    const links:LinkType[] = [
+export const person = {
+    name: "Shoenice",
+    desc: "I am a famous tiktok and YouTube entertainer. My cameos are life-chaning !!",
+    date: "Nav 18, 2020",
+    links: [
         {
-            name: "Creators",
+            name: "YouBute",
             url: "#"
         },
         {
-            name: "Influencers",
+            name: "Tiktok",
+            url: "#"
+        },
+    ]
+}
+
+export const recent_reviews: RecentReviewsProps = {
+    rate: 4.97,
+    amount: 7190,
+    desc: "Shoenice's Cameo videos provide over-the-top comedic performances where he engages in wild stunts like eating spicy foods or strange objects while wishing the recipient a creative happy birthday or other message. While extreme, many reviews note Shoenice's charisma and comedic timing shine through in his absurdist approach. Prospective buyers need to be aware of the outrageous nature of his videos and humor.",
+    examples: [
+        {
+            name: "Jummy Rankin",
+            date: "Wed May 31, 2023",
+            feed: "Delivered in less that 20 min and atuck to the script",
             url: "#"
         },
         {
-            name: "Youbute",
+            name: "Jummy Rankin",
+            date: "Wed May 31, 2023",
+            feed: "Delivered in less that 20 min and atuck to the script",
             url: "#"
         },
         {
-            name: "Shoenice",
+            name: "Jummy Rankin",
+            date: "Wed May 31, 2023",
+            feed: "Delivered in less that 20 min and atuck to the script",
+            url: "#"
+        },
+        {
+            name: "Jummy Rankin",
+            date: "Wed May 31, 2023",
+            feed: "Delivered in less that 20 min and atuck to the script",
             url: "#"
         }
     ]
-
-    const person = {
-        name: "Shoenice",
-        desc: "I am a famous tiktok and YouTube entertainer. My cameos are life-chaning !!",
-        date: "Nav 18, 2020",
-        links: [
-            {
-                name: "YouBute",
-                url: "#"
-            },
-            {
-                name: "Tiktok",
-                url: "#"
-            },
-        ]
-    }
-
-    const recent_reviews: RecentReviewsProps = {
-        rate: 4.97,
-        amount: 7190,
-        desc: "Shoenice's Cameo videos provide over-the-top comedic performances where he engages in wild stunts like eating spicy foods or strange objects while wishing the recipient a creative happy birthday or other message. While extreme, many reviews note Shoenice's charisma and comedic timing shine through in his absurdist approach. Prospective buyers need to be aware of the outrageous nature of his videos and humor.",
-        examples: [
-            {
-                name: "Jummy Rankin",
-                date: "Wed May 31, 2023",
-                feed: "Delivered in less that 20 min and atuck to the script",
-                url: "#"
-            },
-            {
-                name: "Jummy Rankin",
-                date: "Wed May 31, 2023",
-                feed: "Delivered in less that 20 min and atuck to the script",
-                url: "#"
-            },
-            {
-                name: "Jummy Rankin",
-                date: "Wed May 31, 2023",
-                feed: "Delivered in less that 20 min and atuck to the script",
-                url: "#"
-            },
-            {
-                name: "Jummy Rankin",
-                date: "Wed May 31, 2023",
-                feed: "Delivered in less that 20 min and atuck to the script",
-                url: "#"
-            }
-        ]
-    }
-
+}
+const Page = () => {
     return (
         <React.Fragment>
             <div className="relative z-50 bg-black">

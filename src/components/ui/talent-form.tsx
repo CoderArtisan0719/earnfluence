@@ -133,8 +133,6 @@ const TalentForm = () => {
       const res = await fetchMutation(api.talent.signUp, formData);
       sessionStorage.setItem('userInfo', JSON.stringify(res));
       router.push('/influencer')
-    } else {
-      console.log('Validation errors:', validationErrors);
     }
   };
 

@@ -1,14 +1,8 @@
 'use client'
 
-import React, {useEffect} from 'react';
-import {Bricolage_Grotesque} from 'next/font/google'
-
-const inter = Bricolage_Grotesque({ subsets: ['latin'] })
+import React from 'react';
 
 const FantasyFootballBrand = () => {
-    useEffect(() => {
-        console.log("Bri: ", inter);
-    }, [])
     return (
         <React.Fragment>
             <div

@@ -16,7 +16,6 @@ const SignInForm: React.FC = () => {
   const { login } = useAuth();
 
   const handleSocialLogin = (platform: string) => {
-    console.log(`Logging in with ${platform}`);
   };
 
   const handleSignin = async (e: React.FormEvent) => {
@@ -36,7 +35,6 @@ const SignInForm: React.FC = () => {
       router.push('/')
 
     } else {
-      console.log(result, 'result')
       router.push('/sign-up')
 
     }

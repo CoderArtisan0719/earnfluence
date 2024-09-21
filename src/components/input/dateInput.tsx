@@ -5,7 +5,7 @@ interface DateInput {
     setValue: (num: number) => void
 }
 
-const DateInput: React.FC = () => {
+const DateInput: React.FC = ({isHeader=true}: {isHeader?: boolean}) => {
   const [date, setDate] = useState<string>('');
   const [error, setError] = useState<string>('');
 
@@ -26,14 +26,16 @@ const DateInput: React.FC = () => {
 
   return (
     <div className="flex flex-col w-full mt-[20px]">
-      <label htmlFor="date" className="mb-2 text-lg">Enter Date (MM/DD):</label>
+      {
+        isHeader && <label htmlFor="date" className="mb-2 text-lg">Enter Date (MM/DD):</label>
+      } 
       <input
         type="text"
         id="date"
         value={date}
         onChange={handleChange}
-        placeholder="MM/DD"
-        className="w-full bg-transparent border border-[#3f3b45] rounded-[8px] p-[16px] mt-[10px]"
+        placeholder="MM / DD"
+        className="w-full bg-transparent border border-[#3f3b45] rounded-[8px] p-[16px]"
       />
       {error && <p className="text-red-500">{error}</p>}
     </div>

@@ -11,8 +11,6 @@ import { useRouter } from 'next/navigation';
 import DashboardSidebar from "@/components/ui/dashboard-sidebar";
 import KPICard from "@/components/cards/KPICard";
 import KPICardLoading from "@/components/loading/KPICardLoading";
-import Meta from '@/components/common/Meta';
-import DashboardHeader from '@/components/dashboard/DashboardHeader';
 import ChartCardLoading from '@/components/loading/ChartCardLoading';
 import TableLoading from '@/components/loading/TableLoading';
 import { Button } from '@/components/ui/button';
@@ -217,13 +215,13 @@ const Influencer = () => {
             : (todayRequestsOnMarket / yesterdayRequestsOnMarket) * 100 - 100;
 
         const todayAcceptedBids = bids.bids.filter(
-          (bid) =>
+          (bid: any) =>
             isSameDay(new Date(), new Date(bid._creationTime)) &&
             bid.status === 'accepted',
         ).length;
 
         const yesterdayAcceptedBids = bids.bids.filter(
-          (bid) =>
+          (bid: any) =>
             isSameDay(yesterday, new Date(bid._creationTime)) &&
             bid.status === 'accepted',
         ).length;
@@ -234,13 +232,13 @@ const Influencer = () => {
             : (todayAcceptedBids / yesterdayAcceptedBids) * 100 - 100;
 
         const todayBidsPlaced = bids.bids.filter(
-          (bid) =>
+          (bid: any) =>
             isSameDay(new Date(), new Date(bid._creationTime)) &&
             bid.status === 'placed',
         ).length;
 
         const yesterdayBidsPlaced = bids.bids.filter(
-          (bid) =>
+          (bid: any) =>
             isSameDay(yesterday, new Date(bid._creationTime)) &&
             bid.status === 'placed',
         ).length;
@@ -261,7 +259,7 @@ const Influencer = () => {
           {
             title: 'Total Bids accepted',
             value: bids.bids.filter(
-              (bid) =>
+              (bid: any) =>
                 isWithinInterval(new Date(bid._creationTime), {
                   start: addMonths(new Date(), -1),
                   end: new Date(),
@@ -272,7 +270,7 @@ const Influencer = () => {
           {
             title: 'Total Bids placed',
             value: bids.bids.filter(
-              (bid) =>
+              (bid: any) =>
                 isWithinInterval(new Date(bid._creationTime), {
                   start: addMonths(new Date(), -1),
                   end: new Date(),

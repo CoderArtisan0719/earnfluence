@@ -1,14 +1,43 @@
 'use client'
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import React, { useState, useEffect } from "react";
 
 import { Damion } from 'next/font/google'
 import RequiredInput from "@/components/input/requiredInput";
 import BookPayment from "@/components/ui/bookPayment";
+import DateInput from "@/components/input/dateInput";
 
 const damion = Damion({ subsets: ['latin'], weight: "400" })
+
+export const video_types = [
+	"🎂 Birthday",
+	"🏈 Fantasy football",
+	"🤗 Pep Talk",
+	"🔥 Roast",
+	"💜 Advice",
+	"🙋‍♀️ Question",
+	"💭 Other"
+]
+export const random_intros = [
+	"My buddy is your biggest fan. Wish him a happy bday and give him tips to meet a nice lady this year.",
+	"My bestie needs an inspiring, self-love focused happy bday mantra. Focus on inner beauty, confidence, and shining bright!",
+	"It's my nephew's 8th birthday soon. He'll go nuts for a silly, high-energy bday wish. Show your dog if you can!",
+	"I'd love a sweet bday message for my wife. She's been through a lot this year, and your words would mean so much.",
+	"It's my brother's bday! A hilarious take on his addiction to video games and lack of real-world skills would be perfect.",
+	"It's my girlfriend's 'golden birthday' next week and I'm proposing. Send her a heartfelt bday and congrats message!",
+	"It's my roomie's bday. Wish for her to get better at cooking in the year ahead, so maybe her delivery savings can go towards rent.",
+	"It's my best friend's birthday! A hilarious take on her obsession with fashion and her endless shopping sprees would be the perfect gift.",
+	"Looking for a wild, unhinged bday wish for our strangest buddy. Don't hold back!"
+]
+
+export const pronouns = [
+	"He/Him",
+	"She/Her",
+	"They/Them"
+]
+
+
 const BrettfavreBook = () => {
 
 	const [isPaymentHash, setIsPaymentHash] = useState(false);
@@ -19,80 +48,27 @@ const BrettfavreBook = () => {
 		}
 	}, []);
 
-	useEffect(() => {
-		console.log("isPaymentHash:", isPaymentHash)
-	}, [isPaymentHash]);
-
 	const [intro, setIntro] = useState("");
 	const [introError, setIntroError] = useState(false);
 	const [flgPronoun, selFlgPronoun] = useState<number>(-1);
-	const [flgPronounVideoFrom, selFlgPronounVideoFrom] = useState<number>(-1);
 	const [username, setUserName] = useState<string>("")
 	const [videoFrom, setVideoFrom] = useState<string>("");
 	const [fantasyname, setFantasyName] = useState<string>("")
 	const [occasion, setOccasion] = useState<string>("");
-	const pronouns = [
-		"He/Him",
-		"She/Her",
-		"They/Them"
-	]
-
+	const [turning, setTurning] = useState<number>(25);
+	
 	const [flgVideoTypes, setFlgVideoTypes] = useState<number>(0);
-
-	const video_types = [
-		"🎂 Birthday",
-		"🏈 Fantasy football",
-		"🤗 Pep Talk",
-		"🔥 Roast",
-		"💜 Advice",
-		"🙋‍♀️ Question",
-		"💭 Other"
-	]
-
 	const [placeholderRandomIndex, setPlaceholderRandomIndex] = useState(0);
-
-	const placeholder_texts = [
-		"Write a birthday wish for Brett Favre",
-		"Write a fantasy football review",
-		"Write a pep talk",
-		"Write a roast",
-		"Write advice",
-		"Write a question",
-		"Write anything else"
-	]
-
-	const random_intros = [
-		"My buddy is your biggest fan. Wish him a happy bday and give him tips to meet a nice lady this year.",
-		"My bestie needs an inspiring, self-love focused happy bday mantra. Focus on inner beauty, confidence, and shining bright!",
-		"It's my nephew's 8th birthday soon. He'll go nuts for a silly, high-energy bday wish. Show your dog if you can!",
-		"I'd love a sweet bday message for my wife. She's been through a lot this year, and your words would mean so much.",
-		"It's my brother's bday! A hilarious take on his addiction to video games and lack of real-world skills would be perfect.",
-		"It's my girlfriend's 'golden birthday' next week and I'm proposing. Send her a heartfelt bday and congrats message!",
-		"It's my roomie's bday. Wish for her to get better at cooking in the year ahead, so maybe her delivery savings can go towards rent.",
-		"It's my best friend's birthday! A hilarious take on her obsession with fashion and her endless shopping sprees would be the perfect gift.",
-		"Looking for a wild, unhinged bday wish for our strangest buddy. Don't hold back!"
-	]
-
-
-
 	useEffect(() => {
 		setPlaceholderRandomIndex(
 			Math.floor(Math.random() * 100 % random_intros.length)
 		)
 	}, [flgVideoTypes]);
 
-	const handleSubmit = (e) => {
+	const handleSubmit = (e:any) => {
 		e.preventDefault();
-		console.log("--------")
 	}
 
-	const handleDateChange = (date: string | null) => {
-		if (date) {
-			console.log('Valid date:', date);
-		} else {
-			console.log('Invalid date');
-		}
-	};
 
 	return (
 		<React.Fragment>
@@ -231,6 +207,27 @@ const BrettfavreBook = () => {
 													}
 												</div>
 											</div>
+											{
+												flgVideoTypes === 0 && (
+													<React.Fragment>
+														<div className="text-[#f2f1f3] mt-[20px]">
+															<h2 className="font-bold">Their birthday is on (optional):</h2>
+															<DateInput isHeader={false} />
+														</div>
+
+														<div className="text-[#f2f1f3] mt-[20px]">
+															<h2 className="font-bold">They're turning (optional):</h2>
+															<RequiredInput
+																value={turning}
+																setValue={setTurning}
+																placeholder="name"
+																type="number"
+															/>
+														</div>
+													</React.Fragment>
+												)
+											}
+
 
 											<h1 style={{ ...damion.style }} className="text-[30px] mt-[30px]">Sincerely,</h1>
 

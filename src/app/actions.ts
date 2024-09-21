@@ -10,11 +10,6 @@ export const sendVerification = async () => {
     subject: "hello world",
     html: "<strong>it works!</strong>",
   });
-
-  console.log(data);
   
-  if (error) {
-    console.log(';',error);
-  }
   return {data:JSON.stringify(data)};
 };
