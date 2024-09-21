@@ -97,7 +97,7 @@ const BrettfavreBook = () => {
 	return (
 		<React.Fragment>
 			<div className="relative z-50 bg-black">
-				<div className="px-12 border">
+				<div className="px-12">
 					<div className="w-[680px] m-auto p-[24px] mb-[50px]">
 						{/* Header part Start */}
 						<div className="sticky top-0 bg-black z-[100]">
