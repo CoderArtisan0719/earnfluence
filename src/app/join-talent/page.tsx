@@ -4,7 +4,6 @@ import React from "react";
 import Header from "@/components/ui/header";
 import { Separator } from "@/components/ui/separator";
 import FooterSection from "@/components/ui/footer-section";
-import Image from "next/image";
 import TalentForm from "@/components/ui/talent-form";
 import { IconUpload, IconUser, IconVideo, IconSparkles } from "@tabler/icons-react";
 

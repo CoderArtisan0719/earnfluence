@@ -7,22 +7,20 @@ const PhoneInputComponent: React.FC = () => {
 
   const handleChange = (value: string, country: any) => {
     setPhone(value);
-    console.log(country); // This will log the selected country data
   };
   return (
     <div className='relative mt-[10px]'>
       <PhoneInput
-        country={'us'} // Set the default country
+        country={'us'} 
         value={phone}
         onChange={handleChange}
         inputStyle={{
           width: '100%',
           height: '50px',
           fontSize: '16px',
-          paddingLeft: '48px', // Make room for the flag
+          paddingLeft: '48px',
           backgroundColor: 'transparent',
           borderColor: "#3f3b45",
-        //   border border-[#3f3b45] rounded-[8px] p-[16px] mt-[10px]
         }}
         buttonStyle={{
           backgroundColor: 'transparent',

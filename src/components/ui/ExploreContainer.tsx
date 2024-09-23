@@ -93,19 +93,10 @@ const ExploreContainer = () => {
         setStars(tmp)
     }, [])
 
-    useEffect(() => {
-        console.log("filterPrice: ", filterPrice)
-    }, [filterPrice]);
-
     function middleware_setPaginate(num: {num: number}) {
         if (Number(num) == 0 || Number(num) > Math.ceil(stars.length / amountOfDefaultCards)) return
         setPaginate(Number(num))
     }
-
-    useEffect(() => {
-        console.log("flgFilter: ", flgFilter)
-    }, [flgFilter]);
-
     return (
         <div>
             <div className="flex justify-between items-start gap-[30px]">

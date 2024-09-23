@@ -49,10 +49,8 @@ const VendorActive = () => {
         prev.map((item, idx) => (idx === index ? true : item)),
       );
 
-      // Step 1: Get a short-lived upload URL
       const postUrl = await generateUploadUrl();
 
-      // Step 2: POST the file to the URL
       const result = await fetch(postUrl, {
         method: 'POST',
         headers: { 'Content-Type': files?.[index]?.type ?? '' },
@@ -60,7 +58,6 @@ const VendorActive = () => {
       });
       const { storageId } = await result.json();
 
-      // Step 3: Save the newly allocated storage id
       await sendWork({ bidId: _id, workId: storageId as Id<'_storage'> });
 
       setUpdate((prev) => !prev);

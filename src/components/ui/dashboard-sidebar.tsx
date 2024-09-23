@@ -45,7 +45,6 @@ const DashboardSidebar = (props: DashboardSidebarProps) => {
     if (userInfo) {
       const parsedUserInfo = JSON.parse(userInfo);
       setUser(parsedUserInfo);
-      console.log(parsedUserInfo, 'pased')
       if (parsedUserInfo) {
         setMenuItems([
           {

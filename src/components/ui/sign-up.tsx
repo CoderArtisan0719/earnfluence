@@ -69,7 +69,6 @@ const SignUpForm: React.FC = () => {
       }
   
       const result = await fetchMutation(api.user.signUp, { email, dob, phone });
-      console.log(result, 'resutl')
       if (result) {
         const userData = {
           id: result,

@@ -1,13 +1,9 @@
 'use client'
-/* eslint-disable no-console */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable no-underscore-dangle */
 import { useAuthToken } from '@convex-dev/auth/react';
 import { ArrowDownIcon, ArrowUpIcon } from '@radix-ui/react-icons';
 import { useMutation } from 'convex/react';
 import { isSameDay } from 'date-fns';
 import React, { useEffect, useState } from 'react';
-import { toast } from 'sonner';
 
 import Meta from '@/components/common/Meta';
 import DashboardSidebar from "@/components/ui/dashboard-sidebar";
@@ -17,7 +13,6 @@ import TablePagination from '@/utils/TablePagination';
 import type { TransactionTableType, UserTableType } from '@/utils/types';
 
 import { api } from '../../../../convex/_generated/api';
-import type { Id } from '../../../../convex/_generated/dataModel';
 
 const ClientTransaction = () => {
   const [user, setUser] = useState<UserTableType | null>(null);
@@ -31,7 +26,6 @@ const ClientTransaction = () => {
   const [update, setUpdate] = useState(true);
 
   const token = useAuthToken();
-  const userMutation = useMutation(api.users.getById);
 
   const CLIENT_ID =
     'AYdp2BSiaMAr57JNxGtTSYc6xYEup_zC8xGJf3F7HOWU4HnmobVgxClRNKJeIk6LHoSXccJ_hajQTDNi';
@@ -48,7 +42,7 @@ const ClientTransaction = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
-          Authorization: `Basic ${btoa(`${CLIENT_ID}:${CLIENT_SECRET}`)}`, // Encode in Base64
+          Authorization: `Basic ${btoa(`${CLIENT_ID}:${CLIENT_SECRET}`)}`,
         },
         body: 'grant_type=client_credentials',
       },
@@ -66,7 +60,6 @@ const ClientTransaction = () => {
     try {
       setLoading(true);
 
-      // Get the access token
       const accessToken = await getAccessToken();
       const response = await fetch(
         'https://api-m.sandbox.paypal.com/v1/payments/payouts',
@@ -116,19 +109,6 @@ const ClientTransaction = () => {
       setLoading(false);
     }
   };
-
-  const fetchUser = async () => {
-    // if (token) {
-    //   const userId = jwtDecode(String(token))?.sub?.split('|')[0];
-    //   try {
-    //     const res = await userMutation({ userId: userId as Id<'talents'> });
-    //     sessionStorage.setItem('userInfo', JSON.stringify(res));
-    //   } catch (err) {
-    //     toast.error(`Error fetching user: ${err || 'Unknown error'}`);
-    //   }
-    // }
-  };
-
   useEffect(() => {
     if (update) {
     //   fetchUser();

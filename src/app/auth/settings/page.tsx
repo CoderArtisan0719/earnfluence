@@ -105,7 +105,6 @@ const Settings = () => {
                 oldPassword,
             });
 
-            console.log(res);
 
             setSuccessPassword('Successfully Changed.');
             setInvalidPassword('');
