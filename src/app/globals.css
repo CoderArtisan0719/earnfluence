@@ -455,3 +455,19 @@ section {
   background-color: rgb(32, 30, 35);
   box-shadow: rgba(0, 0, 0, 0.01) 0px 207px 58px, rgba(0, 0, 0, 0.08) 0px 132px 53px, rgba(0, 0, 0, 0.27) 0px 74px 45px, rgba(0, 0, 0, 0.45) 0px 33px 33px, rgba(0, 0, 0, 0.52) 0px 8px 18px, rgba(0, 0, 0, 0.53) 0px 0px 0px, rgba(255, 255, 255, 0.08) 0px 1px 1px inset, rgba(0, 0, 0, 0.25) 0px 0px 0px 1px inset;
 }
+
+.Toastify__toast  {
+  background-color: lightgray !important;
+  color: black !important;
+}
+
+.Toastify__toast  {
+  background-color: lightgray !important;
+  color: black !important;
+  font-weight: bold !important;
+}
+
+.Toastify__toast svg {
+  color: black !important;
+  fill: black !important;
+}

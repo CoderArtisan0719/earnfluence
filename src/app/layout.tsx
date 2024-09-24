@@ -30,10 +30,9 @@ export default function RootLayout({
       <head />
       <body>
       <ToastContainer
-        position="top-right"
+        position="top-right"  
         hideProgressBar={true}
         autoClose={2000}
-        theme="dark"
       />
         <Dialog.Root>
           <div className="max-w-[1440px] m-auto">
