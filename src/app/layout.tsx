@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
 
-
 import "./globals.css";
 import '@radix-ui/themes/styles.css';
 
@@ -12,8 +11,9 @@ import "react-phone-input-2/lib/style.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { ConvexClientProvider } from "./provider/ConvexClientProvider";
 import { AuthProvider } from "./provider/AuthContext";
+import { ToastContainer } from "react-toastify";
 import store from '@/store';
-
+import 'react-toastify/dist/ReactToastify.css';
 
 // export const metadata: Metadata = {
 //   title: "earnfluence",
@@ -29,6 +29,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body>
+      <ToastContainer
+        position="top-right"
+        hideProgressBar={true}
+        autoClose={2000}
+        theme="dark"
+      />
         <Dialog.Root>
           <div className="max-w-[1440px] m-auto">
             <Provider store={store}>

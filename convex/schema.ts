@@ -82,4 +82,9 @@ export default defineSchema({
     amount: v.number(),
     type: v.string(), // deposit, escrow, sudmitted, paid, refunding, refunded, closed, withdraw
   }),
+
+  verifycodes: defineTable({
+    email: v.string(),
+    code: v.string(),
+  }),
 });
