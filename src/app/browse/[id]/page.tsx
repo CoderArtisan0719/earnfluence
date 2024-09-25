@@ -1,10 +1,14 @@
-'use client'
 import * as React from "react"
 import Header from "@/components/ui/header"
-import BottomSticky from "@/components/bottom-sticky"
 import FooterSection from "@/components/ui/footer-section"
 import RoundCardCarousel from "@/components/ui/RoundCardsCarousel"
-import ExploreContainer from "@/components/ui/ExploreContainer"
+import ExploreContainer from "@/components/ui/ExploreContainer";
+import { navBarContents } from "@/data/navbar-contents"
+
+
+export async function generateStaticParams() {
+  return navBarContents.map((item) => ({ type: item.title }))
+}
 
 const Page = () => {
 

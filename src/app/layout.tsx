@@ -35,7 +35,7 @@ export default function RootLayout({
         autoClose={2000}
       />
         <Dialog.Root>
-          <div className="max-w-[1440px] m-auto">
+          <div className="">
             <Provider store={store}>
               <AuthProvider>
                 <ConvexClientProvider>

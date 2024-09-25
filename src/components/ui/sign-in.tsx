@@ -27,6 +27,7 @@ const SignInForm: React.FC = () => {
     const result = await fetchMutation(api.user.signIn, { email: email });
     if (result.error) {
       toast("Your email is not registered yet.")
+      router.push('/sign-up')
     } else {
       sendEmail({ email, code: result.code });
       setCodeSent(true)
