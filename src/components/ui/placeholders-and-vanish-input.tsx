@@ -9,10 +9,18 @@ export function PlaceholdersAndVanishInput({
   placeholders,
   onChange,
   onSubmit,
+  onFocus,
+  onBlur,
+  // searchValue,
+  // setSearchValue,
 }: {
   placeholders: string[];
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  onFocus: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
+  // searchValue: string;
+  // setSearchValue: (value: string) => void;
 }) {
   const [currentPlaceholder, setCurrentPlaceholder] = useState(0);
 
@@ -192,11 +200,13 @@ export function PlaceholdersAndVanishInput({
       />
       <input
         onChange={(e) => {
-          if (!animating) {
+          // if (!animating) {
             setValue(e.target.value);
             onChange && onChange(e);
-          }
+          // }
         }}
+        onFocus={onFocus}
+        onBlur={onBlur}
         onKeyDown={handleKeyDown}
         ref={inputRef}
         value={value}
@@ -204,7 +214,7 @@ export function PlaceholdersAndVanishInput({
         // TODO
         className={cn(
           "w-full relative text-sm sm:text-base z-50 border-none text-white h-full rounded-full focus:outline-none focus:ring-0 pl-4 sm:pl-10 pr-20",
-          animating && "text-red-600 dark:text-red-500"
+          // animating && "text-red-600 dark:text-red-500"
         )}
       />
 

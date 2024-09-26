@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-interface DateInput {
-    value: string,
-    setValue: (num: number) => void
-}
+// interface DateInput {
+//     value: string,
+//     setValue: (num: number) => void
+// }
 
 const DateInput: React.FC = ({isHeader=true}: {isHeader?: boolean}) => {
   const [date, setDate] = useState<string>('');

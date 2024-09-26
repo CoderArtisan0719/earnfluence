@@ -6,8 +6,7 @@ import React, {
 	createContext,
 	useRef,
 } from "react";
-
-import { BsFillLightningChargeFill } from "react-icons/bs";
+import { useParams } from "next/navigation";
 
 import {
 	IconChevronLeft,
@@ -32,7 +31,7 @@ export const CarouselContext = createContext<{
 const VideoCarousel = () => {
 	const initialScroll = 0
 	const cards = data.map((card, index) => (
-		<Card index={index}  key={card.src} card={card} />
+		<Card index={index} key={card.src} card={card} />
 	));
 
 	const carouselRef = React.useRef<HTMLDivElement>(null);
@@ -188,18 +187,20 @@ export const Card = ({
 		}
 	};
 
-  const handlePause = (): void => {
-    if (videoRef.current) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    }
-  };
+	const handlePause = (): void => {
+		if (videoRef.current) {
+			videoRef.current.pause();
+			setIsPlaying(false);
+		}
+	};
+
+	const params = useParams();
 
 	return (
 		<div className="w-[135px] h-[180px] rounded-[20px] border relative overflow-hidden flex items-center" onClick={handlePlay}>
 			<div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-30 z-20" />
 			<p className="absolute bottom-[5px] z-40 left-[10px] text-[14px]">{card.title}</p>
-			<div className="flex items-center justify-center w-[20px] h-[20px] absolute top-[calc(50%-10px)] left-[calc(50%-10px)] z-[100]">
+			<div className="z-[20] flex items-center justify-center w-[20px] h-[20px] absolute top-[calc(50%-10px)] left-[calc(50%-10px)]">
 				{
 					isPlaying ?
 						<svg className="fill-[#F2F1F3]" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M216,48V208a16,16,0,0,1-16,16H160a16,16,0,0,1-16-16V48a16,16,0,0,1,16-16h40A16,16,0,0,1,216,48ZM96,32H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V48A16,16,0,0,0,96,32Z"></path></svg>
@@ -208,8 +209,8 @@ export const Card = ({
 				}
 			</div>
 			{
-				isPlaying && 
-				<Link href="shoenice/feed/V54ozp33k" className="absolute top-[10px] right-[10px] z-[100]">
+				isPlaying &&
+				<Link href={`${params.id}/feed/V54ozp33k`} className="absolute top-[10px] right-[10px] z-[100]">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M220,48V96a12,12,0,0,1-24,0V77l-39.51,39.52a12,12,0,0,1-17-17L179,60H160a12,12,0,0,1,0-24h48A12,12,0,0,1,220,48ZM99.51,139.51,60,179V160a12,12,0,0,0-24,0v48a12,12,0,0,0,12,12H96a12,12,0,0,0,0-24H77l39.52-39.51a12,12,0,0,0-17-17Z"></path></svg>
 				</Link>
 			}

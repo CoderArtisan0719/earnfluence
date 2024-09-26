@@ -4,11 +4,8 @@ import React, {
   useState,
   createContext,
 } from "react";
+import { useParams } from "next/navigation";
 import {
-  IconArrowNarrowLeft,
-  IconArrowNarrowRight,
-  IconStarFilled,
-  IconBolt,
   IconChevronLeft,
   IconChevronRight,
 } from "@tabler/icons-react";
@@ -31,11 +28,12 @@ export const CarouselContext = createContext<{
   onCardClose: (index: number) => void;
   currentIndex: number;
 }>({
-  onCardClose: () => {},
+  onCardClose: () => { },
   currentIndex: 0,
 });
 
 export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
+  const params = useParams();
   const carouselRef = React.useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = React.useState(false);
   const [canScrollRight, setCanScrollRight] = React.useState(true);
@@ -92,7 +90,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
       value={{ onCardClose: handleCardClose, currentIndex }}
     >
       <div className="relative w-full">
-        <h2 className="text-3xl font-bold">Actors</h2>
+        <h2 className="text-3xl font-bold">{params.id ? params.id.toString().toUpperCase() : ""}{params.detail && `/${params.detail}`}</h2>
         <div className="flex justify-between items-center gap-2 mr-10 mt-[10px]">
           <h1 className="text-xl font-bold">Explore</h1>
           <div className="flex gap-2">
@@ -113,7 +111,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             </button>
           </div>
         </div>
-        
+
         <div
           className="flex w-full overflow-x-scroll overscroll-x-auto py-5 scroll-smooth [scrollbar-width:none]"
           ref={carouselRef}
@@ -157,7 +155,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             ))}
           </div>
         </div>
-        
+
       </div>
     </CarouselContext.Provider>
   );
@@ -174,7 +172,7 @@ export const Card = ({
   return (
     <div className="w-max">
       <motion.button
-        layoutId={layout ? `card-${card.title}` : undefined}
+        // layoutId={layout ? `card-${card.title}` : undefined}
         className="rounded-full bg-gray-100 dark:bg-neutral-900 h-[106px] w-[106px] overflow-hidden flex flex-col items-start justify-start relative z-10"
       >
         <BlurImage

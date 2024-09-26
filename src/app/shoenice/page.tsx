@@ -28,10 +28,6 @@ export const links:LinkType[] = [
         name: "Youbute",
         url: "#"
     },
-    {
-        name: "Shoenice",
-        url: "#"
-    }
 ]
 
 export const person = {

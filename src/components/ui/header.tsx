@@ -15,7 +15,6 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
@@ -76,7 +75,7 @@ const Header = ({ className }: HeaderProps) => {
                   ))}
                 </ul>
 
-                <div className='flex-1 grid grid-cols-2 p-4 gap-y-[10px]'>
+                <div className='flex-1 grid grid-cols-2 p-8 gap-y-[10px]'>
                   {
                     navBarContents[flgNavBar].suburls.map((item, index) => (
                       <Link key={index} className="text-[]" href={`${navBarContents[flgNavBar].href}/${item.url}`}>{item.title}</Link>
@@ -84,7 +83,7 @@ const Header = ({ className }: HeaderProps) => {
                   }
                 </div>
               </div>
-            </NavigationMenuContent>
+          </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <Link href="/about" legacyBehavior passHref>
@@ -182,7 +181,7 @@ const ListItem = React.forwardRef<
     <li className=''>
       <NavigationMenuLink asChild>
         <Link
-          href={href}
+          href={href ? href : ""}
           onMouseOver={onMouseOver}
           className={cn(
             "flex justify-start items-center select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground h-[100%]",

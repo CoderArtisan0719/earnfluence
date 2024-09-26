@@ -3,6 +3,7 @@ import React from "react";
 import { Carousel, Card } from "@/components/ui/round-cards-carousel";
 
 const RoundCardCarousel = () => {
+
   const cards = data.map((card, index) => (
     <Card key={card.src} card={card} index={index} layout={true} />
   ));
