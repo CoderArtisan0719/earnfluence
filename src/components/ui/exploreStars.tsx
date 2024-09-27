@@ -37,9 +37,7 @@ export const CarouselContext = createContext<{
 
 
 const ExploreStars = ({title, stars}: ExploreStarsProps) => {
-
-
-    const initialScroll = 0
+    const initialScroll = 0;
 	const cards = stars.map((card, index) => (
 		<Card key={card.img} card={card} index={index} layout={true} />
 	));

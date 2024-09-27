@@ -281,11 +281,10 @@ export const Card = ({
 				</div>
 			</div>
 			
-			<div className="gradient-div-before appearance-none bg-black absolute h-[50%] bottom-0 left-0 w-full overflow-hidden">
+			<div className="blur-[70px] gradient-div-before appearance-none bg-black absolute h-[50%] bottom-0 left-0 w-full overflow-hidden">
 				<Image
 					className={cn(
 						"transition duration-300",
-						isLoading ? "blur-sm" : "blur-0",
 						"object-cover absolute z-10 inset-0",
 						"rotate-[180deg]",
 						"blur-[70px]"

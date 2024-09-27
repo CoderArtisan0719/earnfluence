@@ -5,8 +5,6 @@ import React, {
   createContext,
 } from "react";
 import {
-  IconArrowNarrowLeft,
-  IconArrowNarrowRight,
   IconStarFilled,
   IconBolt,
   IconChevronLeft,

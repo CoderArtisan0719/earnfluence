@@ -16,7 +16,7 @@ interface queryDataProps {
 	url: string
 }
 
-const SearchContainer = ({searchValue}: SearchContainer) => {
+const SearchContainer = ({ searchValue }: SearchContainer) => {
 
 	const [queryData, setQueryData] = useState<queryDataProps[]>([]);
 
@@ -40,10 +40,10 @@ const SearchContainer = ({searchValue}: SearchContainer) => {
 		navBarContents.forEach(types => {
 			types.suburls.forEach(suburl => {
 				suburl.title.indexOf("View all") === -1 &&
-				tmp.push({
-					txt: suburl.title,
-					url: suburl.url
-				})
+					tmp.push({
+						txt: suburl.title,
+						url: suburl.url
+					})
 			})
 		});
 		setQueryData([...tmp]);
@@ -64,7 +64,7 @@ const SearchContainer = ({searchValue}: SearchContainer) => {
 				{
 					queryData.filter(item => item.txt.toLowerCase().includes(searchValue.toLowerCase())).map((item, index) => (
 						<Link href={item.url} key={index} className="flex items-center px-[24px] gap-4 justify-start cursor-pointer py-[5px] hover:bg-slate-700">
-							{item.img ? 
+							{item.img ?
 								<Image
 									src={item.img}
 									alt={item.txt}
@@ -73,9 +73,9 @@ const SearchContainer = ({searchValue}: SearchContainer) => {
 									height={24}
 									className="rounded-full w-[40px] h-[40px]"
 								/>
-							:(
-								<CiCircleQuestion className="w-[40px] h-[40px]" />
-							)}
+								: (
+									<CiCircleQuestion className="w-[40px] h-[40px]" />
+								)}
 							<span className="text-[20px]">{item.txt}</span>
 						</Link>
 					))

@@ -14,7 +14,7 @@ const FantasyFootballBrand = () => {
                     lg:aspect-[2048/825]
                 ` }
             >
-                <h1 className="text-[40px] text-center font-bold w-[450px] leading-[1.2]" style={{...inter.style, letterSpacing: "-3px"}}>
+                <h1 className="text-[40px] text-center font-bold w-[450px] leading-[1.2]">
                     Win over your Fantasy league with a Cameo from your favorite celeb
                 </h1>
             </div>

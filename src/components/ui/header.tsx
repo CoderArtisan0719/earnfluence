@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -129,20 +130,26 @@ const Header = ({ className }: HeaderProps) => {
             
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <MdBorderColor className="mr-2 h-4 w-4" />
-              <span>Orders</span>
+              <Link href={'/orders'} className='flex items-center justify-start'>
+                <MdBorderColor className="mr-2 h-4 w-4" />
+                <span>Orders</span>
+              </Link>
             </DropdownMenuItem>
 
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <MdOutlineInbox className="mr-2 h-4 w-4" />
-              <span>Inbox</span>
+              <Link href={"/inbox"}  className='flex items-center justify-start'>
+                <MdOutlineInbox className="mr-2 h-4 w-4" />
+                <span>Inbox</span>
+              </Link>
             </DropdownMenuItem>
 
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <RiUserFollowFill className="mr-2 h-4 w-4" />
-              <span>following</span>
+              <Link href={"/following"} className='flex items-center justify-start'>
+                <RiUserFollowFill className="mr-2 h-4 w-4" />
+                <span>following</span>
+              </Link>
             </DropdownMenuItem>
 
             <DropdownMenuSeparator />
