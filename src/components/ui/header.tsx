@@ -26,7 +26,6 @@ import { navBarContents } from '@/data/navbar-contents';
 import Link from 'next/link';
 import { useAuth } from '@/app/provider/AuthContext';
 import PlaceholdersAndVanishInputDemo from "@/components/ui/PlaceholdersAndVanishInputDemo"
-
 import { MdBorderColor } from "react-icons/md";
 import { MdOutlineInbox } from "react-icons/md";
 import { RiUserFollowFill } from "react-icons/ri";
@@ -43,7 +42,7 @@ const Header = ({ className }: HeaderProps) => {
 
   const { user, logout } = useAuth();
   const [flgNavBar, setFlgNavBar] = useState(0);
-  
+
   const handleScroll = () => {
     const offset = window.scrollY;
     setIsSticky(offset <= 600);
@@ -84,7 +83,7 @@ const Header = ({ className }: HeaderProps) => {
                   }
                 </div>
               </div>
-          </NavigationMenuContent>
+            </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <Link href="/about" legacyBehavior passHref>
@@ -108,71 +107,73 @@ const Header = ({ className }: HeaderProps) => {
       </div>
       {
         user ?
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline"><IconUser className="h-4 w-4" /></Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56">
-            <DropdownMenuGroup>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline"><IconUser className="h-4 w-4" /></Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56">
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <Link href={'/dashboard'} className='flex items-center justify-start'>
+                    <VscAccount className="mr-2 h-4 w-4" />
+                    <span>My Account</span>
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <IconUser className="mr-2 h-4 w-4" />
+                  <span>Profile</span>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+
+              <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <VscAccount className="mr-2 h-4 w-4" />
-                <span>My Account</span>
+                <Link href={'/orders'} className='flex items-center justify-start'>
+                  <MdBorderColor className="mr-2 h-4 w-4" />
+                  <span>Orders</span>
+                </Link>
               </DropdownMenuItem>
-            </DropdownMenuGroup>
 
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
+              <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <IconUser className="mr-2 h-4 w-4" />
-                <span>Profile</span>
+                <Link href={"/inbox"} className='flex items-center justify-start'>
+                  <MdOutlineInbox className="mr-2 h-4 w-4" />
+                  <span>Inbox</span>
+                </Link>
               </DropdownMenuItem>
-            </DropdownMenuGroup>
-            
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <Link href={'/orders'} className='flex items-center justify-start'>
-                <MdBorderColor className="mr-2 h-4 w-4" />
-                <span>Orders</span>
-              </Link>
-            </DropdownMenuItem>
 
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <Link href={"/inbox"}  className='flex items-center justify-start'>
-                <MdOutlineInbox className="mr-2 h-4 w-4" />
-                <span>Inbox</span>
-              </Link>
-            </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <Link href={"/following"} className='flex items-center justify-start'>
+                  <RiUserFollowFill className="mr-2 h-4 w-4" />
+                  <span>following</span>
+                </Link>
+              </DropdownMenuItem>
 
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <Link href={"/following"} className='flex items-center justify-start'>
-                <RiUserFollowFill className="mr-2 h-4 w-4" />
-                <span>following</span>
-              </Link>
-            </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <MdCardGiftcard className="mr-2 h-4 w-4" />
+                <span>Gift Cards</span>
+              </DropdownMenuItem>
 
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <MdCardGiftcard className="mr-2 h-4 w-4" />
-              <span>Gift Cards</span>
-            </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <IoVideocam className="mr-2 h-4 w-4" />
+                <span>Liked videos</span>
+              </DropdownMenuItem>
 
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <IoVideocam className="mr-2 h-4 w-4" />
-              <span>Liked videos</span>
-            </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={logout}>
+                <IconLogout className="mr-2 h-4 w-4" />
+                <span>Log out</span>
+              </DropdownMenuItem>
 
-            <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={logout}>
-              <IconLogout className="mr-2 h-4 w-4" />
-              <span>Log out</span>
-            </DropdownMenuItem>
-            
-          </DropdownMenuContent>
-        </DropdownMenu>
-        : <Link href="/sign-in" className='text-white hover:underline font-medium'>Login</Link>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          : <Link href="/sign-in" className='text-white hover:underline font-medium'>Login</Link>
       }
     </div>
   )

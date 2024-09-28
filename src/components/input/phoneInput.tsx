@@ -19,7 +19,7 @@ const PhoneInputComponent: React.FC = () => {
           height: '50px',
           fontSize: '16px',
           paddingLeft: '48px',
-          backgroundColor: 'transparent',
+          backgroundColor: 'transparent', 
           borderColor: "#3f3b45",
         }}
         buttonStyle={{

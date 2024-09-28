@@ -15,6 +15,41 @@ export const signUp = mutation({
   },
 });
 
+export const photo = mutation({
+  args: { userId: v.id('users'), photo: v.id('_storage') },
+
+  handler: async (ctx, args) => {
+    ctx.db.patch(args.userId, { avatar: args.photo });
+    const user = await ctx.db.get(args.userId);
+    return user;
+  },
+});
+
+export const updateInfo = mutation({
+  args: { 
+    userId: v.id('users'), 
+    name: v.string(),
+    email: v.string(),
+    username: v.string(),
+    bio: v.string(),
+    twitter: v.string(),
+    phone: v.string()
+  },
+
+  handler: async (ctx, args) => {
+    ctx.db.patch(args.userId, { 
+      email: args.email,
+      name: args.name,
+      username: args.username,
+      phone: args.phone,
+      bio: args.bio,
+      twitter: args.twitter,
+    });
+    const user = await ctx.db.get(args.userId);
+    return user;
+  },
+});
+
 export const verifyCode = mutation({
   args: { email: v.string(), code: v.string() },
   handler: async (ctx, { email, code }) => {

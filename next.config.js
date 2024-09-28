@@ -8,8 +8,13 @@ module.exports = {
       "assets.aceternity.com",
       "cdn.cameo.com",
       "d3el26csp1xekx.cloudfront.net",
+      "www.gravatar.com"
     ],
     remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',  // Allow all domains
+      },
       {
         protocol: "https",
         hostname: "aceternity.com",

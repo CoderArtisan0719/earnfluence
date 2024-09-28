@@ -4,8 +4,13 @@ import { v } from "convex/values";
 export default defineSchema({
   users: defineTable({
     email: v.string(),
+    name: v.optional(v.string()),
     phone: v.string(),
-    dob: v.string()
+    dob: v.string(),
+    avatar: v.optional(v.id("_storage")),
+    bio: v.optional(v.string()),
+    twitter: v.optional(v.string()),
+    username: v.optional(v.string())
   }),
 
   talents: defineTable({
@@ -27,7 +32,6 @@ export default defineSchema({
     balance: v.string(),
     isAnonymous: v.optional(v.boolean()),
   }),
-
 
   requests: defineTable({
     userId: v.id('talents'),
